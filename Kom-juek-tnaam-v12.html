@@ -1,0 +1,1399 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kom-juek-tnaam 🚭</title>
+<style>
+:root{--bg:#0a1020;--card:#111a30;--text:#e8eefc;--muted:#9fb0d0;--line:#223056;--key:#18233f;--acc:#4da3ff;--accT:#06122a;--soft:#16264a;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:"Khmer OS","Noto Sans Khmer","Leelawadee UI",system-ui,sans-serif;line-height:1.7}
+main{max-width:640px;margin:0 auto;padding:16px 16px 48px}
+h1{font-size:1.3rem;margin:6px 0 10px}
+.tabs{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+.tabs button{flex:none;font:inherit;border:1px solid var(--line);background:var(--card);color:var(--muted);border-radius:99px;padding:6px 14px;cursor:pointer}
+.tabs button.on{background:var(--acc);color:var(--accT);border-color:var(--acc);font-weight:700}
+.pane{display:none}.pane.on{display:block}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:12px 0}
+.m{color:var(--muted);font-size:.88rem}
+input,select{width:100%;font:inherit;padding:10px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--text)}
+button.b{font:inherit;font-weight:600;border:0;border-radius:10px;padding:10px 16px;cursor:pointer;background:var(--acc);color:var(--accT)}
+button.g{font:inherit;background:none;border:1px solid var(--line);color:var(--muted);border-radius:8px;padding:4px 10px;cursor:pointer}
+.bar{height:14px;background:var(--line);border-radius:99px;overflow:hidden;margin:8px 0}
+.fill{height:100%;width:0;background:var(--acc);transition:width .3s,background .3s}
+label.c{display:flex;gap:10px;padding:8px 0;border-top:1px solid var(--line);cursor:pointer}
+label.c:first-of-type{border-top:0}
+label.c input{width:20px;height:20px;margin-top:6px;accent-color:var(--acc);flex:none}
+label.c span{display:block;color:var(--muted);font-size:.88rem}
+.big{font-size:1.6rem;font-weight:700;margin:0}
+.row{display:flex;gap:10px;flex-wrap:wrap}.f{flex:1;min-width:130px}
+.f small{display:block;color:var(--muted)}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
+.s{background:var(--soft);border-radius:10px;padding:8px 12px;font-size:.88rem}.s b{display:block;font-size:1rem}
+.h{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-top:1px solid var(--line);font-size:.92rem}
+.disp{background:var(--bg);border-radius:12px;padding:10px 14px;text-align:right;margin-bottom:10px;min-height:80px}
+.disp .e{color:var(--muted);min-height:1.4em}.disp .v{font-size:2rem;font-weight:700;word-break:break-all}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.grid button{font:inherit;font-size:1.2rem;font-weight:600;padding:13px 0;border:0;border-radius:12px;background:var(--key);color:var(--text);cursor:pointer}
+.grid .op{background:var(--soft)}.grid .eq{background:var(--acc);color:var(--accT)}.grid .w{grid-column:span 2}
+
+.kg5{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.kg5 button{font:inherit;border:0;border-radius:10px;background:var(--key);color:var(--text);cursor:pointer;padding:6px 0;line-height:1.2}
+.kg5 .k{font-size:1.4rem;display:block}.kg5 .s{font-size:.7rem;color:var(--muted);display:block}
+.cv .kh{font-size:1.6rem;min-height:2.2rem}.cv .la{font-size:1.1rem;color:var(--acc);font-weight:700;min-height:1.6rem}
+.mode2{display:flex;gap:6px;margin:0 0 10px}
+.mode2 button{flex:1;font:inherit;font-size:.86rem;padding:6px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--muted);cursor:pointer}
+.mode2 button.on{background:var(--acc);color:var(--accT);border-color:var(--acc);font-weight:700}
+.act2{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:10px}
+.act2 button{font:inherit;font-weight:600;border:0;border-radius:10px;padding:10px 0;cursor:pointer;background:var(--soft);color:var(--text)}
+.act2 .go{background:var(--acc);color:var(--accT)}
+h2.sh{font-size:.92rem;margin:12px 0 6px;color:var(--muted)}
+.chk{display:flex;gap:8px;align-items:center;margin:0 0 8px;cursor:pointer}
+.chk input{width:18px;height:18px;accent-color:var(--acc)}
+
+.xg,.xn{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px}
+.xc{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 12px}
+.xbig{font-size:1.8rem;font-weight:700;color:var(--acc);line-height:1.1}
+.xbig small{font-size:1rem;color:var(--muted);font-weight:600}
+.xw{font-weight:700;margin-top:4px}.xp{font-size:.85rem;color:var(--muted)}
+.xsp{float:right;font:inherit;border:0;background:var(--soft);border-radius:8px;padding:2px 8px;cursor:pointer}
+.xn .xc{text-align:center}.xnn{font-size:1.5rem;font-weight:700;color:var(--acc)}
+.xnn small{display:block;font-size:.95rem;color:var(--muted);font-weight:600}
+
+.yg{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.yc{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px 12px}
+.yc.today{border:2px solid var(--acc);background:var(--soft)}
+.ybig{font-size:1.6rem;font-weight:700;color:var(--acc);line-height:1.2}
+.ykh{font-size:1.2rem;font-weight:700}
+.yen{font-weight:700;color:var(--acc)}
+.yp{font-size:.85rem;color:var(--muted)}
+.ytag{display:inline-block;background:var(--soft);color:var(--acc);font-weight:700;border-radius:99px;padding:0 8px;font-size:.78rem;margin-right:4px}
+.yc.today .ytag{background:var(--acc);color:var(--accT)}
+.yrow{display:flex;gap:6px;margin-top:6px}
+.yrow button{flex:1;font:inherit;font-size:.8rem;border:0;background:var(--soft);color:var(--text);border-radius:8px;padding:3px 4px;cursor:pointer}
+#y_msg{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(16px + env(safe-area-inset-bottom,0px));background:var(--text);color:var(--bg);padding:8px 14px;border-radius:10px;font-size:.88rem;display:none;max-width:90%;z-index:5}
+
+.ag{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;margin-top:12px}
+.ac{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:10px;text-align:center}
+.ae{font-size:2.6rem;line-height:1.2}
+.ak{font-size:1.2rem;font-weight:700}
+.an{color:var(--acc);font-weight:700}
+.ar{display:flex;gap:6px;margin-top:8px}
+.ar button{flex:1;font:inherit;font-size:.8rem;border:0;border-radius:8px;padding:5px 2px;background:var(--soft);color:var(--text);cursor:pointer}
+.sw{width:72px;height:72px;border-radius:50%;margin:2px auto 6px;border:2px solid var(--line)}
+.hx{font-size:.75rem;color:var(--muted)}
+.gop{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.gop button{font:inherit;font-weight:600;padding:12px 6px;border:1px solid var(--line);border-radius:12px;background:var(--key);color:var(--text);cursor:pointer}
+.gop button.ok{background:#2e9e6b;color:#fff;border-color:#2e9e6b}
+.gop button.no{background:#d64545;color:#fff;border-color:#d64545}
+.gq{text-align:center}
+.rg{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:6px 0 12px}
+.rg button{font:inherit;font-weight:700;padding:12px 0;border:1px solid var(--line);border-radius:12px;background:var(--key);color:var(--text);cursor:pointer}
+.rg button:disabled{opacity:.45;cursor:default}
+.rg button.dn{background:var(--soft);border-color:var(--acc)}
+.pv{font-size:1.35rem;font-weight:700;text-align:center;margin:10px 0;line-height:1.8}
+.rb{font-weight:700;background:linear-gradient(90deg,#e53935,#fb8c00,#fdd835,#43a047,#1e88e5,#3f51b5,#8e24aa,#e53935);background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:rb 4s linear infinite}
+@keyframes rb{to{background-position:300% 0}}
+@media (prefers-reduced-motion:reduce){.rb{animation:none}}
+.al{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:8px}
+.al button{font:inherit;font-weight:600;padding:14px 8px;border:1px solid var(--line);border-radius:12px;background:var(--card);color:var(--text);cursor:pointer;text-align:center}
+.al button:active{background:var(--soft)}
+.tr{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin:8px 0}
+.tr button{width:44px;height:48px;font:inherit;font-size:1.3rem;font-weight:700;border:1px solid var(--line);border-radius:10px;background:var(--key);color:var(--text);cursor:pointer;padding:0}
+.tr button.sl{background:var(--card);border-color:var(--acc)}
+.tr button:disabled{opacity:.3;cursor:default}
+.tr button.ok{background:#2e9e6b;color:#fff;border-color:#2e9e6b;opacity:1}
+.tr button.no{background:#d64545;color:#fff;border-color:#d64545;opacity:1}
+</style>
+</head>
+<body>
+<main>
+<h1><span class="rb">Kom-juek-tnaam</span> 🚭</h1>
+<p class="m" style="margin:0 0 6px">👈 <span class="rb">អូសទៅឆ្វេង ដើម្បីមើលម៉ឺនុយច្រើនទៀត</span></p>
+<p class="m" style="margin:0">🤖<span class="rb">Creator cloud ai v5.5</span></p>
+<p class="m" style="margin:0 0 6px">🔨<span class="rb">Devoloper piseth chorda v0.1</span></p>
+<div class="tabs" id="tabs"></div>
+
+<div class="pane" id="pall"><p class="m">ម៉ឺនុយទាំងអស់ ចុចលើផ្ទាំងណាមួយដើម្បីចូល។</p><div class="al" id="allg"></div></div>
+
+<div class="pane" id="p0">
+<div class="card"><div class="bar"><div class="fill" id="cf"></div></div><div class="m" id="ct"></div><div id="cl"></div></div>
+</div>
+
+<div class="pane" id="p1">
+<div class="card">
+<p class="m">🔒 ការគណនាធ្វើក្នុងឧបករណ៍របស់អ្នក។ សូមកុំវាយពាក្យសម្ងាត់ពិត សូមវាយទម្រង់ស្រដៀងគ្នាសម្រាប់សាកល្បង។</p>
+<input id="pw" placeholder="វាយពាក្យសម្ងាត់សាកល្បង" autocomplete="off" spellcheck="false">
+<div class="bar"><div class="fill" id="pf"></div></div>
+<p class="m" id="pl" style="margin:0">សូមវាយដើម្បីចាប់ផ្តើម</p>
+<p class="big" id="pt">-</p>
+<ul class="m" id="ptips"></ul>
+<p class="m">ការប៉ាន់ស្មានដោយសន្មតថាស្មាន ១០ ពាន់លានដងក្នុងមួយវិនាទី។</p>
+</div>
+</div>
+
+<div class="pane" id="p2">
+<div class="card">
+<div class="disp"><div class="e" id="ke"></div><div class="v" id="kv">0</div></div>
+<div class="grid" id="kg"></div>
+</div>
+</div>
+
+<div class="pane" id="p3">
+<div class="card"><div class="row">
+<div class="f"><small>គោលដៅសរុប</small><input id="sg" type="number" min="1" inputmode="numeric"></div>
+<div class="f"><small>សន្សំក្នុងមួយថ្ងៃ</small><input id="sd" type="number" min="1" inputmode="numeric"></div>
+<div class="f"><small>រូបិយប័ណ្ណ</small><select id="sc"><option value="៛">៛ រៀល</option><option value="$">$ ដុល្លារ</option></select></div>
+</div></div>
+<div class="card">
+<p class="big" id="sp">0%</p>
+<div class="bar"><div class="fill" id="sf"></div></div>
+<div class="stats"><div class="s">បានសន្សំ<b id="s1"></b></div><div class="s">នៅសល់<b id="s2"></b></div><div class="s">១ ថ្ងៃ = ប៉ុន្មាន %<b id="s3"></b></div><div class="s">ត្រូវការទៀត<b id="s4"></b></div></div>
+</div>
+<div class="card"><div class="row">
+<div class="f"><small>ចំនួនថ្ងៃនេះ (ទទេ = ចំនួនប្រចាំថ្ងៃ)</small><input id="sa" type="number" min="1" inputmode="numeric"></div>
+<div style="align-self:end"><button class="b" id="sadd">+ សន្សំថ្ងៃនេះ</button></div></div></div>
+<div class="card"><div class="row" style="justify-content:space-between;align-items:center"><b>ប្រវត្តិ</b><button class="g" id="sres">លុបទាំងអស់</button></div><div id="sh"></div></div>
+<div class="card"><p class="m" id="sst"></p><div class="row"><button class="g" id="sbk">📋 ចម្លងទិន្នន័យសន្សំ</button><button class="g" id="sim">📥 បញ្ចូលទិន្នន័យសន្សំ</button></div></div>
+</div>
+
+<div class="pane" id="p4">
+<div class="card cv">
+<input id="c_inp" placeholder="វាយ ឬបិទភ្ជាប់ព្យញ្ជនៈខ្មែរនៅទីនេះ" autocomplete="off" spellcheck="false" style="margin-bottom:10px">
+<div class="disp"><div class="kh" id="c_kh"></div><div class="la" id="c_la"></div></div>
+<div class="mode2"><button id="c_m1" class="on">សំឡេង (k, kh)</button><button id="c_m2">ឈ្មោះ (ka, kha)</button></div>
+<label class="m chk"><input type="checkbox" id="c_so"> លុប "o" នៅចុង (ក្នុងរបៀបឈ្មោះ)</label>
+<label class="m chk"><input type="checkbox" id="c_sa"> លុប "a" នៅចុង (ក្នុងរបៀបឈ្មោះ)</label>
+<div class="kg5" id="c_grid"></div>
+<div class="act2"><button id="c_bs">⌫</button><button id="c_sp">ដកឃ្លា</button><button id="c_cl">លុបទាំងអស់</button><button class="go" id="c_cp">ចម្លង</button></div>
+<p class="m">បំលែងតែព្យញ្ជនៈ ស្រៈ និងជើងអក្សរនៅដដែល។ ទម្រង់សាមញ្ញប្រហាក់ប្រហែល គ្មានស្តង់ដារតែមួយទេ។</p>
+</div>
+</div>
+
+<div class="pane" id="p5">
+<div class="card cv">
+<input id="v_inp" placeholder="វាយ ឬបិទភ្ជាប់ស្រៈខ្មែរនៅទីនេះ" autocomplete="off" spellcheck="false" style="margin-bottom:10px">
+<div class="disp"><div class="kh" id="v_kh"></div><div class="la" id="v_la"></div></div>
+<div class="mode2"><button id="v_m1" class="on">ស្រៈ "អ" (a-series)</button><button id="v_m2">ស្រៈ "អ៊" (o-series)</button></div>
+<h2 class="sh">ស្រៈអាស្រ័យ</h2><div class="kg5" id="v_g1"></div>
+<h2 class="sh">ស្រៈពេញតួ</h2><div class="kg5" id="v_g2"></div>
+<div class="act2"><button id="v_bs">⌫</button><button id="v_sp">ដកឃ្លា</button><button id="v_cl">លុបទាំងអស់</button><button class="go" id="v_cp">ចម្លង</button></div>
+<p class="m">សំឡេងស្រៈប្រែតាមក្រុមព្យញ្ជនៈ (អ ឬ អ៊)។ ទម្រង់សាមញ្ញប្រហាក់ប្រហែល។</p>
+</div>
+</div>
+
+<div class="pane" id="p6"><p class="m">អក្សរអង់គ្លេស ពាក្យឧទាហរណ៍ ការបកប្រែខ្មែរ និងសម្លេងអានជាអក្សរខ្មែរ។ ចុច 🔊 ដើម្បីស្តាប់។</p><div class="xg" id="x_abc"></div></div>
+<div class="pane" id="p7"><p class="m">លេខ ១ ដល់ ១០០ ជាលេខអារ៉ាប់ លេខខ្មែរ ពាក្យអង់គ្លេស និងសម្លេងអានជាអក្សរខ្មែរ។ សម្លេងអានគឺប្រហាក់ប្រហែលប៉ុណ្ណោះ។</p><div class="xn" id="x_num"></div></div>
+
+<div class="pane" id="p8"><p class="m">ខែសុរិយគតិ មករា ដល់ ធ្នូ ជាមួយភាសាអង់គ្លេស និងសម្លេងអានជាអក្សរខ្មែរ។</p><div class="yg" id="y_mo"></div></div>
+<div class="pane" id="p9"><p class="m">ថ្ងៃច័ន្ទ ដល់ ថ្ងៃអាទិត្យ ជាភាសាអង់គ្លេស។ ថ្ងៃនេះត្រូវបានគូសបញ្ជាក់។</p><div class="yg" id="y_da"></div></div>
+<div class="pane" id="p10"><p class="m">ថ្ងៃទី ១ ដល់ ៣០ (1st, 2nd, 3rd...) ជាភាសាអង់គ្លេស។ ថ្ងៃទីនេះត្រូវបានគូសបញ្ជាក់។</p><div class="yg" id="y_dt"></div></div>
+
+<div class="pane" id="p11">
+<p class="m">ឈ្មោះសត្វជាភាសាខ្មែរ និងអង់គ្លេស ជាមួយសំឡេង។ ចុច 🔊 ដើម្បីស្តាប់។ សំឡេងខ្មែរដំណើរការតែលើឧបករណ៍ដែលមានសំឡេងខ្មែរ (ឧ. Android Chrome)។</p>
+<input id="aq" placeholder="ស្វែងរក ខ្មែរ ឬ English..." autocomplete="off">
+<p class="m" id="acnt"></p>
+<div class="ag" id="ag"></div>
+</div>
+<div class="pane" id="p12">
+<p class="m">របស់ប្រើប្រាស់ប្រចាំថ្ងៃ ១៥៥ ពាក្យ។ វាយជាខ្មែរ ឬអង់គ្លេសដើម្បីរក ហើយចុច 🔊 ដើម្បីស្តាប់។</p>
+<input id="dq" placeholder="ស្វែងរក ខ្មែរ ឬ English..." autocomplete="off">
+<div class="mode2" style="margin-top:10px"><button id="dm1" class="on">ខ្មែរ → English</button><button id="dm2">English → ខ្មែរ</button></div>
+<p class="m" id="dcnt"></p>
+<div class="ag" id="dg"></div>
+</div>
+<div class="pane" id="p13">
+<p class="m">ឈ្មោះពណ៌ជាភាសាខ្មែរ និងអង់គ្លេស ជាមួយសំឡេង។ ចុច 🔊 ដើម្បីស្តាប់។</p>
+<input id="oq" placeholder="ស្វែងរក ខ្មែរ ឬ English..." autocomplete="off">
+<div class="mode2" style="margin-top:10px"><button id="om1" class="on">ខ្មែរ → English</button><button id="om2">English → ខ្មែរ</button></div>
+<p class="m" id="ocnt"></p>
+<div class="ag" id="og"></div>
+</div>
+<div class="pane" id="p14"><div class="card" id="gm"></div><div class="card" id="pz"></div></div>
+<div class="pane" id="p15"><div class="card" id="pg"></div></div>
+<div class="pane" id="p16">
+<p class="m">ផ្លែឈើ និងរសជាតិ ១១០ ពាក្យ។ វាយជាខ្មែរ ឬអង់គ្លេសដើម្បីរក ហើយចុច 🔊 ដើម្បីស្តាប់។ រូបខ្លះប្រើរូបស្រដៀងគ្នា ព្រោះគ្មានរូបពិតប្រាកដ។</p>
+<input id="fq" placeholder="ស្វែងរក ខ្មែរ ឬ English..." autocomplete="off">
+<div class="mode2" style="margin-top:10px"><button id="fm1" class="on">ខ្មែរ → English</button><button id="fm2">English → ខ្មែរ</button></div>
+<p class="m" id="fcnt"></p>
+<div class="ag" id="fg"></div>
+</div>
+<div class="pane" id="p17"><div class="card" id="ag2"></div></div>
+</main>
+<div id="y_msg"></div>
+<script>
+const $=id=>document.getElementById(id);
+const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+
+/* tabs */
+const names=["📋 All","🔐 សុវត្ថិភាព","⏱️ ពាក្យសម្ងាត់","🧮 គិតលេខ","💰 សន្សំលុយ","🔤 ព្យញ្ជនៈ","🔤 ស្រៈ","🔠 ABC","🔢 លេខ ១-១០០","📅 ខែ","🗓️ ថ្ងៃ","📆 ថ្ងៃទី","🐾 សត្វ","🏠 របស់ប្រើប្រាស់","🎨 ពណ៌","🎮 ហ្គេម","📜 ពាក្យប្រដៅ","🍎 ផ្លែឈើ","➕ បូកលេខ"];
+names.forEach((n,i)=>{const b=document.createElement("button");b.textContent=n;b.onclick=()=>go(i);$("tabs").appendChild(b)});
+function go(i){document.querySelectorAll(".pane").forEach((p,j)=>p.classList.toggle("on",i===j));[...$("tabs").children].forEach((b,j)=>b.classList.toggle("on",i===j));store.set("tab2",i);window.scrollTo(0,0)}
+names.forEach((n,i)=>{if(!i)return;const b=document.createElement("button");b.textContent=n;b.onclick=()=>go(i);$("allg").appendChild(b)});
+
+/* checklist */
+const items=[
+["ប្រើកម្មវិធីគ្រប់គ្រងពាក្យសម្ងាត់","មួយគណនី មួយពាក្យសម្ងាត់ផ្សេងគ្នា"],
+["បើក 2FA លើអ៊ីមែល ធនាគារ និងបណ្តាញសង្គម","ប្រើកម្មវិធី Authenticator ជាជាង SMS"],
+["កុំចែករំលែកកូដ OTP ជាមួយនរណាទាំងអស់","គ្មានធនាគារ ឬក្រុមហ៊ុនពិតណាសុំកូដនេះទេ"],
+["រក្សាទុកកូដសង្គ្រោះនៅកន្លែងសុវត្ថិភាព","ក្រដាស ឬកន្លែងលាក់"],
+["បើកការអាប់ដេតស្វ័យប្រវត្តិ","ទូរស័ព្ទ កុំព្យូទ័រ និងកម្មវិធី"],
+["កំណត់ការចាក់សោអេក្រង់","លេខសម្ងាត់ ៦ ខ្ទង់ឡើងទៅ ឬស្នាមម្រាមដៃ"],
+["ប្តូរពាក្យសម្ងាត់ router","កុំប្រើលំនាំដើម ហើយប្រើ WPA2 ឬ WPA3"],
+["ប្រយ័ត្ន Wi-Fi សាធារណៈ","កុំចូលធនាគារតាម Wi-Fi សាធារណៈ"],
+["កុំចុចតំណដែលមិនរំពឹងទុក","ពិនិត្យអ្នកផ្ញើមុនចុច"],
+["បម្រុងទុកទិន្នន័យ","ច្បាប់ចម្លងយ៉ាងតិច ២ កន្លែង"]];
+let cs=store.get("cs",{});
+items.forEach((it,i)=>{const l=document.createElement("label");l.className="c";l.innerHTML='<input type="checkbox" data-i="'+i+'"'+(cs[i]?" checked":"")+'><div><b>'+it[0]+"</b><span>"+it[1]+"</span></div>";$("cl").appendChild(l)});
+$("cl").onchange=e=>{cs[e.target.dataset.i]=e.target.checked;store.set("cs",cs);cu()};
+function cu(){const n=document.querySelectorAll("#cl input:checked").length;$("cf").style.width=n/items.length*100+"%";$("ct").textContent="បានធ្វើ "+n+" / "+items.length}
+cu();
+
+/* password check */
+const common=["123456","password","qwerty","abc123","111111","admin","khmer","cambodia","metfone","phnompenh","siemreap","wifi","12345678"];
+function fmt(s){const m=60,h=3600,d=86400,y=31557600;
+ if(s<1)return"ភ្លាមៗ";if(s<m)return Math.round(s)+" វិនាទី";if(s<h)return Math.round(s/m)+" នាទី";
+ if(s<d)return Math.round(s/h)+" ម៉ោង";if(s<y)return Math.round(s/d)+" ថ្ងៃ";
+ if(s<y*1000)return Math.round(s/y).toLocaleString()+" ឆ្នាំ";if(s<y*1e6)return Math.round(s/y/1000).toLocaleString()+" ពាន់ឆ្នាំ";return"រាប់លានឆ្នាំ+"}
+$("pw").oninput=()=>{
+ const p=$("pw").value;
+ if(!p){$("pl").textContent="សូមវាយដើម្បីចាប់ផ្តើម";$("pt").textContent="-";$("pf").style.width="0";$("ptips").innerHTML="";return}
+ let pool=0;const t=[];
+ if(/[a-z]/.test(p))pool+=26;if(/[A-Z]/.test(p))pool+=26;if(/[0-9]/.test(p))pool+=10;if(/[^A-Za-z0-9]/.test(p))pool+=33;
+ const u=new Set(p).size;let bits=(u+(p.length-u)*0.3)*Math.log2(Math.max(pool,2));
+ if(common.some(c=>p.toLowerCase().includes(c)&&p.length<=c.length+4)){bits=Math.min(bits,18);t.push("មានពាក្យទូទៅ")}
+ if(/(0123|1234|2345|3456|4567|5678|6789|abcd|qwer)/i.test(p)){bits-=6;t.push("មានលំដាប់ងាយៗ")}
+ if(/(19|20)\d\d/.test(p)){bits-=4;t.push("មានឆ្នាំដែលងាយស្មាន")}
+ if(p.length<12)t.push("ខ្លីពេក ព្យាយាមយ៉ាងតិច ១២ ទៅ ១៦ តួអក្សរ");
+ if(u<p.length*0.6)t.push("តួអក្សរដដែលៗច្រើន");
+ bits=Math.max(bits,1);const s=Math.pow(2,bits-1)/1e10,y=s/31557600;
+ let n,c,w;
+ if(s<3600){n="ខ្សោយខ្លាំង 🔴";c="#d64545";w=12}else if(y<1){n="ខ្សោយ 🟠";c="#e08a2b";w=35}
+ else if(y<1000){n="មធ្យម 🟡";c="#d4b020";w=60}else if(y<1e6){n="ខ្លាំង 🟢";c="#3aa876";w=82}else{n="ខ្លាំងណាស់ 🟢";c="#1f7a5c";w=100}
+ $("pl").textContent="កម្រិត៖ "+n;$("pt").textContent="ប្រហែល "+fmt(s);
+ $("pf").style.width=w+"%";$("pf").style.background=c;$("ptips").innerHTML=t.map(x=>"<li>"+x+"</li>").join("")};
+
+/* calculator */
+const keys=[["C","op"],["⌫","op"],["%","op"],["÷","op"],["7"],["8"],["9"],["×","op"],["4"],["5"],["6"],["−","op"],["1"],["2"],["3"],["+","op"],["0","w"],["."],["=","eq"]];
+keys.forEach(k=>{const b=document.createElement("button");b.textContent=k[0];if(k[1])b.className=k[1];b.onclick=()=>press(k[0]);$("kg").appendChild(b)});
+let cur="0",acc=null,op=null,fresh=true;
+const nf=n=>isFinite(n)?String(parseFloat(n.toPrecision(12))):"មិនអាចគណនា";
+const calc=(a,o,b)=>o==="+"?a+b:o==="−"?a-b:o==="×"?a*b:o==="÷"?(b===0?NaN:a/b):b;
+function ks(){$("kv").textContent=cur;$("ke").textContent=(acc!==null&&op)?nf(acc)+" "+op:""}
+function press(k){
+ if(cur==="មិនអាចគណនា"&&k!=="C")return;
+ if(/\d/.test(k)){if(fresh||cur==="0"){cur=k;fresh=false}else if(cur.length<15)cur+=k}
+ else if(k==="."){if(fresh){cur="0.";fresh=false}else if(!cur.includes("."))cur+="."}
+ else if(k==="C"){cur="0";acc=null;op=null;fresh=true}
+ else if(k==="⌫"){if(!fresh)cur=cur.length>1?cur.slice(0,-1):"0"}
+ else if(k==="%"){cur=nf(parseFloat(cur)/100);fresh=true}
+ else if(k==="="){if(op!==null&&acc!==null){const f=nf(acc)+" "+op+" "+cur+" =";cur=nf(calc(acc,op,parseFloat(cur)));acc=null;op=null;fresh=true;ks();$("ke").textContent=f;return}}
+ else{if(op!==null&&acc!==null&&!fresh)cur=nf(calc(acc,op,parseFloat(cur)));if(cur==="មិនអាចគណនា"){acc=null;op=null;ks();return}acc=parseFloat(cur);op=k;fresh=true}
+ ks()}
+document.addEventListener("keydown",e=>{
+ if(document.activeElement.tagName==="INPUT"||!$("p2").classList.contains("on"))return;
+ const m={"*":"×","/":"÷","-":"−","Enter":"=","Backspace":"⌫","Escape":"C"},k=m[e.key]||e.key;
+ if(/^[0-9.+%=]$/.test(k)||["×","÷","−","⌫","C"].includes(k)){e.preventDefault();press(k)}});
+ks();
+
+/* savings */
+let sv=Object.assign({goal:1000000,daily:500,cur:"៛",entries:[]},store.get("sv",{}));
+const money=n=>sv.cur==="$"?"$"+n.toLocaleString(undefined,{maximumFractionDigits:2}):n.toLocaleString(undefined,{maximumFractionDigits:0})+" ៛";
+function sr(){
+ const g=Math.max(+sv.goal||1,1),d=Math.max(+sv.daily||1,1),sum=sv.entries.reduce((a,e)=>a+e.a,0),p=Math.min(sum/g*100,100),left=Math.max(g-sum,0);
+ $("sp").textContent=p.toFixed(2)+"%";$("sf").style.width=p+"%";$("s1").textContent=money(sum);$("s2").textContent=money(left);
+ $("s3").textContent=(d/g*100).toFixed(4)+"%";$("s4").textContent=Math.ceil(left/d).toLocaleString()+" ថ្ងៃ";
+ const h=$("sh");h.innerHTML=sv.entries.length?"":'<p class="m">មិនទាន់មានកំណត់ត្រា</p>';
+ sv.entries.slice().reverse().forEach((e,i)=>{const ix=sv.entries.length-1-i,r=document.createElement("div");r.className="h";
+  r.innerHTML="<span>"+e.d+" · +"+money(e.a)+' <span class="m">('+(e.a/g*100).toFixed(4)+"%)</span></span>";
+  const b=document.createElement("button");b.className="g";b.textContent="លុប";b.onclick=()=>{sv.entries.splice(ix,1);store.set("sv",sv);sr()};r.appendChild(b);h.appendChild(r)})}
+$("sg").value=sv.goal;$("sd").value=sv.daily;$("sc").value=sv.cur;
+$("sg").oninput=e=>{sv.goal=+e.target.value;store.set("sv",sv);sr()};
+$("sd").oninput=e=>{sv.daily=+e.target.value;store.set("sv",sv);sr()};
+$("sc").onchange=e=>{sv.cur=e.target.value;store.set("sv",sv);sr()};
+$("sadd").onclick=()=>{const a=+$("sa").value||+sv.daily;if(!(a>0))return;const t=new Date();sv.entries.push({d:t.getDate()+"/"+(t.getMonth()+1)+"/"+t.getFullYear(),a});$("sa").value="";store.set("sv",sv);sr()};
+$("sres").onclick=()=>{if(confirm("លុបកំណត់ត្រាទាំងអស់?")){sv.entries=[];store.set("sv",sv);sr()}};
+sr();
+(function(){
+ let ok=true;try{localStorage.setItem("_t","1");localStorage.removeItem("_t")}catch(e){ok=false}
+ $("sst").textContent=ok?"💾 ទិន្នន័យសន្សំត្រូវបានរក្សាទុកក្នុងឧបករណ៍នេះដោយស្វ័យប្រវត្តិ។ ចេញចូលវិញនៅតែមានដដែល។":"⚠️ កម្មវិធីនេះមិនអាចរក្សាទុកទិន្នន័យបានទេ។ សូមបើកក្នុង Chrome ឬ Safari ឬចុច ចម្លងទិន្នន័យ ដើម្បីរក្សាទុកខ្លួនឯង។";
+ const save=()=>store.set("sv",sv);
+ addEventListener("pagehide",save);
+ document.addEventListener("visibilitychange",()=>{if(document.hidden)save()});
+ $("sbk").onclick=()=>{const t=JSON.stringify(sv);
+  try{navigator.clipboard.writeText(t).then(()=>alert("បានចម្លងទិន្នន័យ។ សូមបិទភ្ជាប់រក្សាទុកក្នុងកំណត់ត្រា ឬ Telegram។"),()=>prompt("ចម្លងកូដនេះ៖",t))}catch(e){prompt("ចម្លងកូដនេះ៖",t)}};
+ $("sim").onclick=()=>{const t=prompt("បិទភ្ជាប់កូដទិន្នន័យសន្សំ៖");if(!t)return;
+  try{const d=JSON.parse(t);if(!Array.isArray(d.entries))throw 0;
+   sv=Object.assign({goal:1000000,daily:500,cur:"៛",entries:[]},d);save();
+   $("sg").value=sv.goal;$("sd").value=sv.daily;$("sc").value=sv.cur;sr();alert("បានបញ្ចូលទិន្នន័យ ✓")}catch(e){alert("កូដមិនត្រឹមត្រូវទេ")}};
+})();
+
+/* khmer consonants -> latin */
+const CM={"ក":["ka","k"],"ខ":["kha","kh"],"គ":["ko","k"],"ឃ":["kho","kh"],"ង":["ngo","ng"],"ច":["cha","ch"],"ឆ":["chha","chh"],"ជ":["cho","ch"],"ឈ":["chho","chh"],"ញ":["nho","nh"],"ដ":["da","d"],"ឋ":["tha","th"],"ឌ":["do","d"],"ឍ":["tho","th"],"ណ":["na","n"],"ត":["ta","t"],"ថ":["tha","th"],"ទ":["to","t"],"ធ":["tho","th"],"ន":["no","n"],"ប":["ba","b"],"ផ":["pha","ph"],"ព":["po","p"],"ភ":["pho","ph"],"ម":["mo","m"],"យ":["yo","y"],"រ":["ro","r"],"ល":["lo","l"],"វ":["vo","v"],"ស":["sa","s"],"ហ":["ha","h"],"ឡ":["la","l"],"អ":["a","a"]};
+let cmode=1;
+Object.keys(CM).filter(c=>c!=="ឡ"&&c!=="អ").forEach(c=>{const b=document.createElement("button");b.innerHTML='<span class="k">'+c+'</span><span class="s">'+CM[c][1]+"</span>";b.onclick=()=>{$("c_inp").value+=c;cup()};$("c_grid").appendChild(b)});
+function cconv(t){let o="",pc=false;
+ for(const ch of t){
+  if(CM[ch]){let v=CM[ch][cmode];
+   if(cmode===0&&$("c_so").checked&&v.length>1&&v.endsWith("o"))v=v.slice(0,-1);
+   if(cmode===0&&$("c_sa").checked&&v.length>1&&v.endsWith("a"))v=v.slice(0,-1);
+   o+=(cmode===0&&pc?" ":"")+v;pc=true}
+  else{o+=ch;pc=false}}
+ return o}
+function cup(){const t=$("c_inp").value;$("c_kh").textContent=t;$("c_la").textContent=cconv(t)}
+$("c_inp").oninput=cup;$("c_so").onchange=cup;$("c_sa").onchange=cup;
+$("c_m1").onclick=()=>{cmode=1;$("c_m1").classList.add("on");$("c_m2").classList.remove("on");cup()};
+$("c_m2").onclick=()=>{cmode=0;$("c_m2").classList.add("on");$("c_m1").classList.remove("on");cup()};
+$("c_bs").onclick=()=>{const a=[...$("c_inp").value];a.pop();$("c_inp").value=a.join("");cup()};
+$("c_sp").onclick=()=>{$("c_inp").value+=" ";cup()};
+$("c_cl").onclick=()=>{$("c_inp").value="";cup()};
+$("c_cp").onclick=()=>{const t=$("c_la").textContent;if(!t)return;try{navigator.clipboard.writeText(t).then(()=>{$("c_cp").textContent="បានចម្លង ✓";setTimeout(()=>$("c_cp").textContent="ចម្លង",1200)},()=>{})}catch(e){}};
+cup();
+
+/* khmer vowels -> latin */
+const VD={"ា":["aa","ea"],"ិ":["e","i"],"ី":["ei","i"],"ឹ":["oe","ue"],"ឺ":["oe","ue"],"ុ":["o","u"],"ូ":["ou","u"],"ួ":["uo","uea"],"ើ":["aeu","eu"],"ឿ":["eua","eua"],"ៀ":["ie","ie"],"េ":["e","e"],"ែ":["ae","ae"],"ៃ":["ai","ey"],"ោ":["ao","ou"],"ៅ":["au","ov"]};
+const VI={"ឥ":"ey","ឦ":"ei","ឧ":"ok","ឩ":"ouk","ឪ":"au","ឫ":"rue","ឬ":"reu","ឭ":"lue","ឮ":"leu","ឯ":"ae","ឰ":"ai","ឱ":"ao","ឳ":"au"};
+let vs=0;
+function vlab(){$("v_g1").innerHTML="";$("v_g2").innerHTML="";
+ Object.keys(VD).forEach(c=>{const b=document.createElement("button");b.innerHTML='<span class="k">ក'+c+'</span><span class="s">'+VD[c][vs]+"</span>";b.onclick=()=>{$("v_inp").value+=c;vup()};$("v_g1").appendChild(b)});
+ Object.keys(VI).forEach(c=>{const b=document.createElement("button");b.innerHTML='<span class="k">'+c+'</span><span class="s">'+VI[c]+"</span>";b.onclick=()=>{$("v_inp").value+=c;vup()};$("v_g2").appendChild(b)})}
+function vconv(t){let o="";for(const ch of t){o+=VD[ch]?VD[ch][vs]:(VI[ch]||ch)}return o}
+function vup(){const t=$("v_inp").value;$("v_kh").textContent=t;$("v_la").textContent=vconv(t)}
+$("v_inp").oninput=vup;
+$("v_m1").onclick=()=>{vs=0;$("v_m1").classList.add("on");$("v_m2").classList.remove("on");vlab();vup()};
+$("v_m2").onclick=()=>{vs=1;$("v_m2").classList.add("on");$("v_m1").classList.remove("on");vlab();vup()};
+$("v_bs").onclick=()=>{const a=[...$("v_inp").value];a.pop();$("v_inp").value=a.join("");vup()};
+$("v_sp").onclick=()=>{$("v_inp").value+=" ";vup()};
+$("v_cl").onclick=()=>{$("v_inp").value="";vup()};
+$("v_cp").onclick=()=>{const t=$("v_la").textContent;if(!t)return;try{navigator.clipboard.writeText(t).then(()=>{$("v_cp").textContent="បានចម្លង ✓";setTimeout(()=>$("v_cp").textContent="ចម្លង",1200)},()=>{})}catch(e){}};
+vlab();vup();
+
+/* ABC and numbers */
+(function(){
+const L=[
+["A","អេ","Apple","ផ្លែប៉ោម","អាប់ផល"],["B","ប៊ី","Book","សៀវភៅ","ប៊ុក"],["C","ស៊ី","Cat","ឆ្មា","ខែត"],["D","ឌី","Dog","ឆ្កែ","ដក់"],
+["E","អ៊ី","Egg","ស៊ុត","អេក"],["F","អេហ្វ","Fish","ត្រី","ហ្វីស"],["G","ជី","Girl","ក្មេងស្រី","កើល"],["H","អេច","House","ផ្ទះ","ហៅស៍"],
+["I","អាយ","Ice","ទឹកកក","អាយស៍"],["J","ជេ","Juice","ទឹកផ្លែឈើ","ជូស"],["K","ខេ","Key","សោ","គី"],["L","អែល","Lion","តោ","ឡាយអុន"],
+["M","អែម","Moon","ព្រះច័ន្ទ","មូន"],["N","អែន","Nose","ច្រមុះ","ណូស"],["O","អូ","Orange","ក្រូចថ្លុង","អរិញ្ជ"],["P","ពី","Pen","ប៊ិច","ផេន"],
+["Q","គយូ","Queen","ព្រះមហាក្សត្រី","ក្វីន"],["R","អា","Rain","ភ្លៀង","រេន"],["S","អែស","Sun","ព្រះអាទិត្យ","សាន់"],["T","ធី","Tree","ដើមឈើ","ទ្រី"],
+["U","យូ","Umbrella","ឆត្រ","អាំប្រែឡា"],["V","វី","Van","ឡាន","វែន"],["W","ដាប់ប៊លយូ","Water","ទឹក","វ៉ូទើ"],["X","អែក","X-ray","កាំរស្មីអ៊ិច","អែក-រេ"],
+["Y","វ៉ាយ","Yellow","ពណ៌លឿង","យ៉េឡូ"],["Z","ហ្ស៊ី","Zoo","សួនសត្វ","ហ្ស៊ូ"]];
+function say(t){try{const u=new SpeechSynthesisUtterance(t);u.lang="en-US";u.rate=.8;speechSynthesis.cancel();speechSynthesis.speak(u)}catch(e){}}
+const A=$("x_abc");
+L.forEach(l=>{const d=document.createElement("div");d.className="xc";
+ d.innerHTML='<button class="xsp" aria-label="ស្តាប់">🔊</button><div class="xbig">'+l[0]+" "+l[0].toLowerCase()+' <small>'+l[1]+'</small></div><div class="xw">'+l[2]+'</div><div>'+l[3]+'</div><div class="xp">អាន៖ '+l[4]+"</div>";
+ d.querySelector("button").onclick=()=>say(l[0]+". "+l[2]);A.appendChild(d)});
+const KD="០១២៣៤៥៦៧៨៩";
+const kh=n=>String(n).split("").map(c=>KD[+c]).join("");
+const ones=["","one","two","three","four","five","six","seven","eight","nine","ten","eleven","twelve","thirteen","fourteen","fifteen","sixteen","seventeen","eighteen","nineteen"];
+const onesK=["","វ៉ាន់","ធូ","ធ្រី","ហ្វ័រ","ហ្វាយវ៍","ស៊ីក","សេវិន","អេត","ណាយន៍","តែន","អ៊ីលេវិន","ធ្វែលវ៍","ធើទីន","ហ្វ័រទីន","ហ្វីហ្វទីន","ស៊ីកស្ទីន","សេវិនទីន","អេតទីន","ណាយន៍ទីន"];
+const tens=["","","twenty","thirty","forty","fifty","sixty","seventy","eighty","ninety"];
+const tensK=["","","ធ្វិនធី","ធើធី","ហ្វ័រធី","ហ្វីហ្វធី","ស៊ីកស្ធី","សេវិនធី","អេធី","ណាយន៍ធី"];
+function word(n){if(n===100)return["one hundred","វ៉ាន់ ហាន់ដ្រិដ"];if(n<20)return[ones[n],onesK[n]];
+ const t=Math.floor(n/10),u=n%10;return u?[tens[t]+"-"+ones[u],tensK[t]+" "+onesK[u]]:[tens[t],tensK[t]]}
+const N=$("x_num");
+for(let i=1;i<=100;i++){const w=word(i),d=document.createElement("div");d.className="xc";
+ d.innerHTML='<div class="xnn">'+i+" · "+kh(i)+"<small>"+w[0]+'</small></div><div class="xp">អាន៖ '+w[1]+'</div><button class="xsp" style="float:none;margin-top:4px">🔊</button>';
+ d.querySelector("button").onclick=()=>say(w[0]);N.appendChild(d)}
+})();
+
+/* months, weekdays, dates */
+(function(){
+const KD="០១២៣៤៥៦៧៨៩";
+const kh=n=>String(n).split("").map(c=>KD[+c]).join("");
+const msg=$("y_msg");let tm;
+function toast(t){msg.textContent=t;msg.style.display="block";clearTimeout(tm);tm=setTimeout(()=>msg.style.display="none",7000)}
+function speak(t,lang){
+ try{
+  const vs=speechSynthesis.getVoices();
+  if(lang==="km-KH"){
+   const has=vs.some(v=>v.lang.toLowerCase().replace("_","-").startsWith("km"));
+   if(vs.length&&!has){toast("ឧបករណ៍របស់អ្នកមិនមានសំឡេងខ្មែរទេ។ សូមអានតាមអក្សរខ្មែរដែលបង្ហាញ");return}
+   if(!vs.length)toast("បើមិនឮសំឡេង នោះឧបករណ៍មិនមានសំឡេងខ្មែរ");
+  }
+  const u=new SpeechSynthesisUtterance(t);u.lang=lang;u.rate=.8;speechSynthesis.cancel();speechSynthesis.speak(u);
+ }catch(e){toast("ឧបករណ៍មិនគាំទ្រសំឡេង")}
+}
+function btns(d,khT,enT){d.insertAdjacentHTML("beforeend",'<div class="yrow"><button class="a">🔊 ខ្មែរ</button><button class="b">🔊 EN</button></div>');d.querySelector(".a").onclick=()=>speak(khT,"km-KH");d.querySelector(".b").onclick=()=>speak(enT,"en-US")}
+
+const M=[
+["មករា","January","ជេនយូអារី",31,"Meakara"],
+["កុម្ភៈ","February","ហ្វេប្រូអារី",28,"Kompheak"],
+["មីនា","March","ម៉ាច",31,"Minea"],
+["មេសា","April","អេព្រីល",30,"Mesa"],
+["ឧសភា","May","មេ",31,"Usaphea"],
+["មិថុនា","June","ជូន",30,"Mithona"],
+["កក្កដា","July","ជូឡាយ",31,"Kakkada"],
+["សីហា","August","អោហ្គឹស្ត",31,"Seiha"],
+["កញ្ញា","September","សិបតែមប៊ើ",30,"Kanha"],
+["តុលា","October","អុកតូប៊ើ",31,"Tola"],
+["វិច្ឆិកា","November","ណូវែមប៊ើ",30,"Vichhika"],
+["ធ្នូ","December","ឌីសែមប៊ើ",31,"Thnou"]];
+M.forEach((m,i)=>{const d=document.createElement("div");d.className="yc";
+ d.innerHTML='<span class="ytag">'+(i+1)+" · "+kh(i+1)+'</span><div class="ykh">'+m[0]+'</div><div class="yp">'+m[4]+'</div><div class="yen">'+m[1]+'</div><div class="yp">អាន៖ '+m[2]+" · "+kh(m[3])+" ថ្ងៃ"+(i===1?" (២៩ ឆ្នាំបង្គ្រោះ)":"")+"</div>";
+ btns(d,m[0],m[1]);$("y_mo").appendChild(d)});
+
+const D=[
+["ច័ន្ទ","Monday","ម៉ានដេ","Thngai Chan",1],
+["អង្គារ","Tuesday","ធូសដេ","Thngai Angkea",2],
+["ពុធ","Wednesday","វេនស៍ដេ","Thngai Pot",3],
+["ព្រហស្បតិ៍","Thursday","ធើសដេ","Thngai Prohos",4],
+["សុក្រ","Friday","ហ្វ្រាយដេ","Thngai Sok",5],
+["សៅរ៍","Saturday","សាទើដេ","Thngai Sao",6],
+["អាទិត្យ","Sunday","សាន់ដេ","Thngai Atit",0]];
+const td=new Date().getDay();
+D.forEach((m,i)=>{const d=document.createElement("div");d.className="yc"+(m[4]===td?" today":"");
+ d.innerHTML='<span class="ytag">'+(i+1)+" · "+kh(i+1)+'</span>'+(m[4]===td?'<span class="ytag">ថ្ងៃនេះ</span>':"")+(m[4]===0||m[4]===6?'<span class="ytag">ចុងសប្តាហ៍</span>':"")+'<div class="ykh">ថ្ងៃ'+m[0]+'</div><div class="yp">'+m[3]+'</div><div class="yen">'+m[1]+'</div><div class="yp">អាន៖ '+m[2]+"</div>";
+ btns(d,"ថ្ងៃ"+m[0],m[1]);$("y_da").appendChild(d)});
+
+const ord=["","first","second","third","fourth","fifth","sixth","seventh","eighth","ninth","tenth","eleventh","twelfth","thirteenth","fourteenth","fifteenth","sixteenth","seventeenth","eighteenth","nineteenth"];
+const ordK=["","ហ្វើស","សេកខិន","ធើដ","ហ្វ័រធ","ហ្វីហ្វធ","ស៊ីកស្ធ","សេវិនធ","អេតធ","ណាយន៍ធ","តែនធ","អ៊ីលេវិនធ","ធ្វែលហ្វធ","ធើទីនធ","ហ្វ័រទីនធ","ហ្វីហ្វទីនធ","ស៊ីកស្ទីនធ","សេវិនទីនធ","អេតទីនធ","ណាយន៍ទីនធ"];
+const tens=["","","twenty","thirty"],tensK=["","","ធ្វិនធី","ធើធី"],tensO=["","","twentieth","thirtieth"],tensOK=["","","ធ្វិនធីអិធ","ធើធីអិធ"];
+function word(n){if(n<20)return[ord[n],ordK[n]];const t=Math.floor(n/10),u=n%10;return u?[tens[t]+"-"+ord[u],tensK[t]+" "+ordK[u]]:[tensO[t],tensOK[t]]}
+function suf(n){if(n%100>=11&&n%100<=13)return"th";return({1:"st",2:"nd",3:"rd"})[n%10]||"th"}
+const dn=new Date().getDate();
+for(let i=1;i<=30;i++){const w=word(i),d=document.createElement("div");d.className="yc"+(i===dn?" today":"");
+ d.innerHTML='<div class="ybig">'+i+suf(i)+(i===dn?' <span class="ytag">ថ្ងៃនេះ</span>':"")+'</div><div class="ykh" style="font-size:1rem">ថ្ងៃទី '+kh(i)+'</div><div class="yen">'+w[0]+'</div><div class="yp">អាន៖ '+w[1]+"</div>";
+ btns(d,"ថ្ងៃទី "+kh(i),"the "+w[0]);$("y_dt").appendChild(d)}
+try{speechSynthesis.getVoices()}catch(e){}
+})();
+
+/* animals */
+(function(){
+const AD=`🐘|ដំរី|Elephant
+🐅|ខ្លា|Tiger
+🦁|តោ|Lion
+🐆|ខ្លារខិន|Leopard
+🐒|ស្វា|Monkey
+🦍|ហ្គោរីឡា|Gorilla
+🦧|អូរ៉ង់អ៊ូតង់|Orangutan
+🐕|ឆ្កែ|Dog
+🐶|កូនឆ្កែ|Puppy
+🐈|ឆ្មា|Cat
+🐱|កូនឆ្មា|Kitten
+🐈‍⬛|ឆ្មាខ្មៅ|Black cat
+🐈|ឆ្មាព្រៃ|Wild cat
+🐄|គោ|Cow
+🐃|ក្របី|Water buffalo
+🐂|គោឈ្មោល|Ox
+🐖|ជ្រូក|Pig
+🐗|ជ្រូកព្រៃ|Wild boar
+🐑|ចៀម|Sheep
+🐏|ចៀមឈ្មោល|Ram
+🐐|ពពែ|Goat
+🐎|សេះ|Horse
+🦓|សេះឆ្នូត|Zebra
+🦒|ហ្ស៊ីរ៉ាហ្វ|Giraffe
+🦏|រមាស|Rhinoceros
+🦛|ហ៊ីបប៉ូប៉ូតាម|Hippopotamus
+🐪|អូដ្ឋ|Camel
+🦙|ឡាម៉ា|Llama
+🦌|ក្តាន់|Deer
+🐇|ទន្សាយ|Rabbit
+🐇|ទន្សាយព្រៃ|Hare
+🐀|កណ្តុរ|Rat
+🐹|ហាំស្ទើរ|Hamster
+🐿️|ក្ដុល|Squirrel
+🦇|ប្រចៀវ|Bat
+🐻|ខ្លាឃ្មុំ|Bear
+🐻‍❄️|ខ្លាឃ្មុំស|Polar bear
+🐼|ផេនដា|Panda
+🦊|កញ្ជ្រោង|Fox
+🐺|ចចក|Wolf
+🐕|ឆ្កែព្រៃ|Wild dog
+🦘|កាំងហ្គូរូ|Kangaroo
+🐨|កូអាឡា|Koala
+🦝|រ៉ាខុន|Raccoon
+🐩|ឆ្កែពូដល|Poodle
+🐬|ផ្សោត|Dolphin
+🐋|ត្រីបាឡែន|Whale
+🦈|ត្រីឆ្លាម|Shark
+🦑|មឹក|Squid
+🦀|ក្តាម|Crab
+🦐|បង្គា|Shrimp
+🦞|បង្កង|Lobster
+🐟|ត្រី|Fish
+🐠|ត្រីពណ៌|Tropical fish
+🐟|ត្រីរ៉ស់|Snakehead fish
+🐌|ខ្យង|Snail
+🐍|ពស់|Snake
+🐍|ពស់វែក|Cobra
+🐍|ពស់ថ្លាន់|Python
+🐊|ក្រពើ|Crocodile
+🐢|អណ្តើក|Turtle
+🦎|ជីងចក់|Gecko
+🐸|កង្កែប|Frog
+🐔|មាន់|Chicken
+🐔|មាន់ញី|Hen
+🐓|មាន់ឈ្មោល|Rooster
+🐓|មាន់ព្រៃ|Junglefowl
+🐥|កូនមាន់|Chick
+🦆|ទា|Duck
+🦆|ក្ងាន|Goose
+🦢|ហង្ស|Swan
+🕊️|ព្រាប|Pigeon
+🦜|សេក|Parrot
+🦚|ក្ងោក|Peacock
+🦅|ឥន្ទ្រី|Eagle
+🦉|ទីទុយ|Owl
+🐦|ក្អែក|Crow
+🐦|ចាប|Sparrow
+🐦|សារិកា|Myna
+🦢|ក្រៀល|Crane
+🦩|ហ្វ្លាមីងហ្គោ|Flamingo
+🐧|ភេនហ្គីន|Penguin
+🦋|មេអំបៅ|Butterfly
+🐝|ឃ្មុំ|Bee
+🐜|ស្រមោច|Ant
+🕷️|ពីងពាង|Spider
+🦗|ចង្រិត|Cricket
+🦗|កណ្តូប|Grasshopper
+🦟|មូស|Mosquito
+🪰|រុយ|Fly
+🐛|ដង្កូវ|Caterpillar
+🐛|ដង្កូវនាង|Silkworm
+🐄|កូនគោ|Calf
+🐖|កូនជ្រូក|Piglet
+🐑|កូនចៀម|Lamb
+🐎|កូនសេះ|Foal
+🐥|កូនទា|Duckling
+🐘|កូនដំរី|Baby elephant
+🐅|កូនខ្លា|Tiger cub
+🐐|កូនពពែ|Young goat
+🐁|កណ្តុរតូច|Mouse
+🦦|ឆ្កែទឹក|Otter
+🦨|ស្កាន់|Skunk
+🦥|ស្លូថ|Sloth
+🦫|ប៊ីវើរ|Beaver
+🦬|បឺសុន|Bison
+🦄|សេះមួយស្នែង|Unicorn
+🐉|នាគ|Dragon
+🦖|ឌីណូស័រ|Dinosaur
+🦂|ខ្ទួយ|Scorpion
+🦤|ដូដូ|Dodo
+🦃|ទួរគី|Turkey
+🐦|បក្សី|Bird
+🫎|ម៉ូស|Moose
+🦮|ឆ្កែណែនាំ|Guide dog
+🦎|តុកកែ|Tokay gecko
+🐟|អណ្តែង|Eel
+🐆|ខ្លាខ្មៅ|Black panther
+🐘|ដំរីព្រៃ|Wild elephant
+🐋|ត្រីបាឡែនខៀវ|Blue whale
+🐢|អណ្តើកសមុទ្រ|Sea turtle
+🐝|ឃ្មុំព្រៃ|Wild bee
+🐾|សត្វ|Animal
+🐕|សត្វចិញ្ចឹម|Pet
+🐺|សត្វព្រៃ|Wild animal
+🐠|សត្វទឹក|Aquatic animal
+🐇|កូនទន្សាយ|Baby rabbit
+🐒|កូនស្វា|Baby monkey
+🐦|កូនបក្សី|Baby bird
+🐢|កូនអណ្តើក|Baby turtle
+🐊|កូនក្រពើ|Baby crocodile
+🐍|កូនពស់|Baby snake
+🦁|កូនតោ|Lion cub
+🐻|កូនខ្លាឃ្មុំ|Bear cub
+🦌|កូនក្តាន់|Fawn
+🦅|ត្មាត|Vulture
+🐟|ត្រីអន្ទង់|Eel
+🐟|ត្រីអណ្តែង|Catfish
+🐠|ត្រីមាស|Goldfish
+⭐|ផ្កាយសមុទ្រ|Starfish
+🐠|សេះសមុទ្រ|Seahorse
+🦭|ដំរីសមុទ្រ|Walrus
+🐃|កូនក្របី|Baby buffalo
+🐀|កូនកណ្តុរ|Baby rat
+🦊|កូនកញ្ជ្រោង|Baby fox
+🐺|កូនចចក|Baby wolf
+🦆|កូនក្ងាន|Baby goose
+🕊️|កូនព្រាប|Baby pigeon
+🐸|កូនកង្កែប|Baby frog
+🐟|កូនត្រី|Baby fish
+🦚|កូនក្ងោក|Baby peacock
+🦜|កូនសេក|Baby parrot
+🐆|កូនខ្លារខិន|Baby leopard
+🦏|កូនរមាស|Baby rhino
+🦓|កូនសេះឆ្នូត|Baby zebra
+🐪|កូនអូដ្ឋ|Baby camel
+🐬|កូនផ្សោត|Baby dolphin
+🦒|កូនហ្ស៊ីរ៉ាហ្វ|Baby giraffe
+🦅|កូនឥន្ទ្រី|Baby eagle
+🦉|កូនទីទុយ|Baby owl
+🐘|ដំរីញី|Female elephant
+🐅|ខ្លាញី|Female tiger
+🦁|តោញី|Female lion
+🐒|ស្វាញី|Female monkey
+🐕|ឆ្កែញី|Female dog
+🐈|ឆ្មាញី|Female cat
+🐄|គោញី|Female cow
+🐃|ក្របីញី|Female buffalo
+🐖|ជ្រូកញី|Female pig
+🐑|ចៀមញី|Female sheep
+🐐|ពពែញី|Female goat
+🐎|សេះញី|Female horse
+🦌|ក្តាន់ញី|Female deer
+🐇|ទន្សាយញី|Female rabbit
+🐀|កណ្តុរញី|Female rat
+🐻|ខ្លាឃ្មុំញី|Female bear
+🦊|កញ្ជ្រោងញី|Female fox
+🐺|ចចកញី|Female wolf
+🦆|ទាញី|Female duck
+🦆|ក្ងានញី|Female goose
+🕊️|ព្រាបញី|Female pigeon
+🐊|ក្រពើញី|Female crocodile
+🐢|អណ្តើកញី|Female turtle
+🐸|កង្កែបញី|Female frog
+🐍|ពស់ញី|Female snake
+🐟|ត្រីញី|Female fish
+🦚|ក្ងោកញី|Female peacock
+🦜|សេកញី|Female parrot
+🐆|ខ្លារខិនញី|Female leopard
+🦏|រមាសញី|Female rhino
+🦓|សេះឆ្នូតញី|Female zebra
+🐪|អូដ្ឋញី|Female camel
+🐬|ផ្សោតញី|Female dolphin
+🦒|ហ្ស៊ីរ៉ាហ្វញី|Female giraffe
+🦅|ឥន្ទ្រីញី|Female eagle
+🦉|ទីទុយញី|Female owl
+🐘|ដំរីឈ្មោល|Male elephant
+🐅|ខ្លាឈ្មោល|Male tiger
+🦁|តោឈ្មោល|Male lion
+🐒|ស្វាឈ្មោល|Male monkey
+🐕|ឆ្កែឈ្មោល|Male dog
+🐈|ឆ្មាឈ្មោល|Male cat
+🐃|ក្របីឈ្មោល|Male buffalo
+🐖|ជ្រូកឈ្មោល|Male pig
+🐐|ពពែឈ្មោល|Male goat
+🐎|សេះឈ្មោល|Male horse
+🦌|ក្តាន់ឈ្មោល|Male deer
+🐇|ទន្សាយឈ្មោល|Male rabbit
+🐀|កណ្តុរឈ្មោល|Male rat
+🐻|ខ្លាឃ្មុំឈ្មោល|Male bear
+🦊|កញ្ជ្រោងឈ្មោល|Male fox
+🐺|ចចកឈ្មោល|Male wolf
+🦆|ទាឈ្មោល|Male duck
+🦆|ក្ងានឈ្មោល|Male goose
+🕊️|ព្រាបឈ្មោល|Male pigeon
+🐊|ក្រពើឈ្មោល|Male crocodile
+🐢|អណ្តើកឈ្មោល|Male turtle
+🐸|កង្កែបឈ្មោល|Male frog
+🐍|ពស់ឈ្មោល|Male snake
+🐟|ត្រីឈ្មោល|Male fish
+🦚|ក្ងោកឈ្មោល|Male peacock
+🦜|សេកឈ្មោល|Male parrot
+🐆|ខ្លារខិនឈ្មោល|Male leopard
+🦏|រមាសឈ្មោល|Male rhino
+🦓|សេះឆ្នូតឈ្មោល|Male zebra
+🐪|អូដ្ឋឈ្មោល|Male camel
+🐬|ផ្សោតឈ្មោល|Male dolphin
+🦒|ហ្ស៊ីរ៉ាហ្វឈ្មោល|Male giraffe
+🦅|ឥន្ទ្រីឈ្មោល|Male eagle
+🦉|ទីទុយឈ្មោល|Male owl
+🐅|ខ្លាព្រៃ|Wild tiger
+🦌|ក្តាន់ព្រៃ|Wild deer
+🐒|ស្វាព្រៃ|Wild monkey
+🐃|ក្របីព្រៃ|Wild buffalo
+🐂|គោព្រៃ|Wild ox`.split("\n").map(l=>l.split("|"));
+const msg=$("y_msg");let tm;
+function toast(s){msg.textContent=s;msg.style.display="block";clearTimeout(tm);tm=setTimeout(()=>msg.style.display="none",6000)}
+function hasKm(){try{return speechSynthesis.getVoices().some(v=>v.lang.toLowerCase().replace("_","-").startsWith("km"))}catch(e){return false}}
+function say(t,lang){try{const u=new SpeechSynthesisUtterance(t);u.lang=lang;u.rate=.85;speechSynthesis.cancel();speechSynthesis.speak(u)}catch(e){toast("ឧបករណ៍មិនគាំទ្រសំឡេង")}}
+function render(f){
+ const g=$("ag");g.innerHTML="";
+ const list=AD.filter(a=>!f||a[1].includes(f)||a[2].toLowerCase().includes(f.toLowerCase()));
+ $("acnt").textContent="បង្ហាញ "+list.length+" / "+AD.length+" ប្រភេទ";
+ list.forEach(a=>{
+  const c=document.createElement("div");c.className="ac";
+  c.innerHTML='<div class="ae">'+a[0]+'</div><div class="ak">'+a[1]+'</div><div class="an">'+a[2]+'</div><div class="ar"><button class="a" aria-label="ស្តាប់ខ្មែរ">🔊 ខ្មែរ</button><button class="b" aria-label="Listen English">🔊 EN</button></div>';
+  c.querySelector(".a").onclick=()=>{if(!hasKm()){toast("ឧបករណ៍របស់អ្នកមិនមានសំឡេងខ្មែរទេ។ សូមអានតាមអក្សរខ្មែរដែលបង្ហាញ ឬសាកល្បងលើ Android Chrome");return}say(a[1],"km-KH")};
+  c.querySelector(".b").onclick=()=>say(a[2],"en-US");
+  g.appendChild(c);
+ });
+}
+$("aq").oninput=e=>render(e.target.value.trim());
+render("");
+})();
+/* daily words and colors */
+(function(){
+const msg=$("y_msg");let tm;
+function toast(s){msg.textContent=s;msg.style.display="block";clearTimeout(tm);tm=setTimeout(()=>msg.style.display="none",6000)}
+function hasKm(){try{return speechSynthesis.getVoices().some(v=>v.lang.toLowerCase().replace("_","-").startsWith("km"))}catch(e){return false}}
+function say(t,lang){
+ if(lang==="km-KH"&&!hasKm()){toast("ឧបករណ៍របស់អ្នកមិនមានសំឡេងខ្មែរទេ។ សូមអានតាមអក្សរខ្មែរដែលបង្ហាញ ឬសាកល្បងលើ Android Chrome");return}
+ try{const u=new SpeechSynthesisUtterance(t);u.lang=lang;u.rate=.85;speechSynthesis.cancel();speechSynthesis.speak(u)}catch(e){toast("ឧបករណ៍មិនគាំទ្រសំឡេង")}
+}
+function mk(p,list,sw,unit){GD[p]=list;
+ let mode=0;
+ function render(){
+  const f=$(p+"q").value.trim(),g=$(p+"g");g.innerHTML="";
+  const l=list.filter(a=>!f||a[1].includes(f)||a[2].toLowerCase().includes(f.toLowerCase()));
+  $(p+"cnt").textContent="បង្ហាញ "+l.length+" / "+list.length+" "+unit;
+  l.forEach(a=>{
+   const c=document.createElement("div");c.className="ac";const q=mode?[a[2],a[1]]:[a[1],a[2]];
+   c.innerHTML=(sw?'<div class="sw" style="background:'+a[0]+'"></div>':'<div class="ae">'+a[0]+'</div>')+'<div class="ak">'+q[0]+'</div><div class="an">'+q[1]+'</div>'+(sw?'<div class="hx">'+a[0].toUpperCase()+'</div>':"")+'<div class="ar"><button class="a">🔊 ខ្មែរ</button><button class="b">🔊 EN</button></div>';
+   c.querySelector(".a").onclick=()=>say(a[1],"km-KH");
+   c.querySelector(".b").onclick=()=>say(a[2],"en-US");
+   g.appendChild(c)})}
+ $(p+"q").oninput=render;
+ $(p+"m1").onclick=()=>{mode=0;$(p+"m1").classList.add("on");$(p+"m2").classList.remove("on");render()};
+ $(p+"m2").onclick=()=>{mode=1;$(p+"m2").classList.add("on");$(p+"m1").classList.remove("on");render()};
+ render()}
+window.GD={};const GD=window.GD;
+const P=t=>t.split("\n").map(l=>l.split("|"));
+mk("d",P(`🪑|កៅអី|Chair
+🛏️|គ្រែ|Bed
+🛋️|សាឡុង|Sofa
+🚪|ទ្វារ|Door
+🪟|បង្អួច|Window
+🔑|កូនសោ|Key
+🔒|សោ|Lock
+💡|អំពូល|Light bulb
+🔦|ពិល|Flashlight
+🕯️|ទៀន|Candle
+🪞|កញ្ចក់|Mirror
+🪥|ច្រាសដុសធ្មេញ|Toothbrush
+🧼|សាប៊ូ|Soap
+🧴|សាប៊ូកក់សក់|Shampoo
+🚿|ផ្កាឈូក|Shower
+🛁|អាងងូតទឹក|Bathtub
+🚽|បង្គន់|Toilet
+🧻|ក្រដាសបង្គន់|Toilet paper
+🪒|កាំបិតកោរ|Razor
+🧹|អំបោស|Broom
+🧺|កន្ត្រក|Basket
+🪣|ធុង|Bucket
+🗑️|ធុងសំរាម|Trash can
+🍽️|ចាន|Plate
+🥄|ស្លាបព្រា|Spoon
+🍴|សមុ|Fork
+🔪|កាំបិត|Knife
+🥢|ចង្កឹះ|Chopsticks
+🥛|កែវ|Glass
+☕|ពែង|Cup
+🍾|ដប|Bottle
+🍳|ខ្ទះ|Frying pan
+🍲|ឆ្នាំង|Pot
+🫖|ក្រុងតែ|Teapot
+🔥|ចង្ក្រាន|Stove
+🧊|ទូទឹកកក|Refrigerator
+🍚|ឆ្នាំងដាំបាយ|Rice cooker
+🧂|អំបិល|Salt
+📺|ទូរទស្សន៍|Television
+📱|ទូរស័ព្ទ|Phone
+💻|កុំព្យូទ័រយួរដៃ|Laptop
+🖥️|កុំព្យូទ័រ|Computer
+🔌|ដោតភ្លើង|Plug
+🔋|ថ្ម|Battery
+🎧|កាស|Headphones
+📷|កាមេរ៉ា|Camera
+⌚|នាឡិកាដៃ|Watch
+⏰|នាឡិការោទ៍|Alarm clock
+🌀|កង្ហារ|Fan
+☂️|ឆត្រ|Umbrella
+🕶️|វ៉ែនតាខ្មៅ|Sunglasses
+👓|វ៉ែនតា|Glasses
+👕|អាវ|Shirt
+👖|ខោ|Pants
+👗|រ៉ូប|Dress
+🧦|ស្រោមជើង|Socks
+👟|ស្បែកជើង|Shoes
+🧢|មួក|Cap
+🎒|កាបូបស្ពាយ|Backpack
+👜|កាបូបដៃ|Handbag
+👛|កាបូបលុយ|Wallet
+💍|ចិញ្ចៀន|Ring
+✂️|កន្ត្រៃ|Scissors
+🪡|ម្ជុល|Needle
+🧵|អំបោះ|Thread
+🔨|ញញួរ|Hammer
+🪚|រណារ|Saw
+🪜|ជណ្ដើរ|Ladder
+📖|សៀវភៅ|Book
+📓|សៀវភៅកត់ត្រា|Notebook
+✏️|ខ្មៅដៃ|Pencil
+🖊️|ប៊ិច|Pen
+📏|បន្ទាត់|Ruler
+📄|ក្រដាស|Paper
+✉️|ស្រោមសំបុត្រ|Envelope
+🎁|កាដូ|Gift
+💵|លុយ|Money
+💳|កាតធនាគារ|Bank card
+🛒|រទេះទិញឥវ៉ាន់|Shopping cart
+🛍️|ថង់|Bag
+📦|ប្រអប់|Box
+🧰|ប្រអប់ឧបករណ៍|Toolbox
+🚲|កង់|Bicycle
+🛵|ម៉ូតូ|Motorbike
+🚗|ឡាន|Car
+🚌|ឡានក្រុង|Bus
+🛺|ម៉ូតូកង់បី|Tuk-tuk
+⛑️|មួកសុវត្ថិភាព|Helmet
+🗺️|ផែនទី|Map
+🧭|ត្រីវិស័យ|Compass
+🔔|ជួង|Bell
+🎈|ប៉េងប៉ោង|Balloon
+⚽|បាល់|Ball
+🧸|តុក្កតា|Teddy bear
+💊|ថ្នាំ|Medicine
+🩹|បង់រុំរបួស|Bandage
+🌡️|ទែម៉ូម៉ែត្រ|Thermometer
+😷|ម៉ាស|Mask
+🧽|អេប៉ុង|Sponge
+🛌|ខ្នើយ|Pillow
+🧴|ឡេ|Lotion
+🪮|ស្នេរ|Comb
+🧤|ស្រោមដៃ|Gloves
+🧥|អាវក្រៅ|Coat
+👔|ក្រវ៉ាត់ក|Necktie
+🩳|ខោខ្លី|Shorts
+👙|ឈុតហែលទឹក|Swimsuit
+👠|ស្បែកជើងកែងខ្ពស់|High heels
+🥾|ស្បែកជើងកវែង|Boots
+🧣|កន្សែងក|Scarf
+👝|កាបូបតូច|Pouch
+💼|កាបូបឯកសារ|Briefcase
+🔍|កែវពង្រីក|Magnifying glass
+📎|ក្ដាប់ក្រដាស|Paper clip
+🖍️|ខ្មៅដៃពណ៌|Crayon
+🖌️|ជក់|Paintbrush
+🧷|ម្ជុលសុវត្ថិភាព|Safety pin
+⛓️|ច្រវាក់|Chain
+🔩|ប៊ូឡុង|Bolt
+🧲|មេដែក|Magnet
+🪝|ទំពក់|Hook
+🧱|ឥដ្ឋ|Brick
+🛖|ខ្ទម|Hut
+🏠|ផ្ទះ|House
+🏢|អគារ|Building
+🏫|សាលា|School
+🏪|ហាង|Shop
+🏥|មន្ទីរពេទ្យ|Hospital
+🏦|ធនាគារ|Bank
+🧯|ឧបករណ៍ពន្លត់ភ្លើង|Fire extinguisher
+🪁|ខ្លែង|Kite
+🎲|គ្រាប់ឡុកឡាក់|Dice
+🧩|ល្បែងផ្គុំរូប|Puzzle
+🎮|ហ្គេម|Game
+🎸|ហ្គីតា|Guitar
+🥁|ស្គរ|Drum
+🎹|ព្យ៉ាណូ|Piano
+🎺|ត្រែ|Trumpet
+🎤|មីក្រូ|Microphone
+📻|វិទ្យុ|Radio
+🖨️|ម៉ាស៊ីនបោះពុម្ព|Printer
+⌨️|ក្តារចុច|Keyboard
+🖱️|កណ្តុរកុំព្យូទ័រ|Computer mouse
+☎️|ទូរស័ព្ទផ្ទះ|Landline phone
+📅|ប្រតិទិន|Calendar
+📰|កាសែត|Newspaper
+🪙|កាក់|Coin
+🧾|វិក្កយបត្រ|Receipt
+🎫|សំបុត្រ|Ticket
+🪪|អត្តសញ្ញាណប័ណ្ណ|ID card
+🛂|លិខិតឆ្លងដែន|Passport
+🧳|វ៉ាលី|Suitcase
+⛱️|ឆត្រឆ្នេរ|Beach umbrella
+⏳|នាឡិកាខ្សាច់|Hourglass
+🕰️|នាឡិកា|Clock
+🪑|តុ|Table
+🗄️|ទូ|Cabinet
+🚪|ទូខោអាវ|Wardrobe
+📚|ធ្នើរ|Shelf
+🟫|កំរាលព្រំ|Carpet
+🛏️|ភួយ|Blanket
+🧖|កន្សែង|Towel
+🧻|ក្រដាសជូត|Tissue
+🧼|សាប៊ូលាងដៃ|Hand soap
+🪥|ថ្នាំដុសធ្មេញ|Toothpaste
+🧺|ម៉ាស៊ីនបោកគក់|Washing machine
+❄️|ម៉ាស៊ីនត្រជាក់|Air conditioner
+🔥|ឡដុតនំ|Oven
+🍲|ឡមីក្រូវ៉េវ|Microwave
+🚿|ម៉ាស៊ីនកម្តៅទឹក|Water heater
+🧹|ម៉ាស៊ីនបូមធូលី|Vacuum cleaner
+👔|ដែកអ៊ុត|Iron
+🍾|ដបទឹក|Water bottle
+🖍️|ក្រយ៉ូន|Crayon
+🧽|ជ័រលុប|Eraser
+📎|ស្កុត|Tape
+🧴|កាវ|Glue
+📁|ថតឯកសារ|Folder
+📱|កុំព្យូទ័របន្ទះ|Tablet
+🖥️|អេក្រង់|Screen
+🔌|ខ្សែសាក|Charging cable
+🔊|ឧបករណ៍បំពង​សំឡេង|Speaker
+🎤|មីក្រូហ្វូន|Microphone
+🖨️|ម៉ាស៊ីនព្រីន|Printer
+👕|អាវយឺត|T-shirt
+🧥|អាវភ្លៀង|Raincoat
+👘|សារុង|Sarong
+🧣|ក្រមា|Krama
+👗|សំពត់|Skirt
+👖|ក្រវ៉ាត់|Belt
+📿|ខ្សែក|Necklace
+💍|ក្រវិល|Earring
+📿|កងដៃ|Bracelet
+🍳|ក្តារចិត្ត|Cutting board
+🏺|ពាង|Jar
+🥘|ឆ្នាំងចំហុយ|Steamer
+🧂|ស្ករ|Sugar
+🫙|ប្រេង|Oil
+🐟|ទឹកត្រី|Fish sauce
+🥫|ទឹកស៊ីអ៊ីវ|Soy sauce
+🚚|ឡានដឹកទំនិញ|Truck
+🚆|រថភ្លើង|Train
+✈️|យន្តហោះ|Airplane
+⛵|ទូក|Boat
+🚢|កប៉ាល់|Ship
+🌉|ស្ពាន|Bridge
+🛣️|ផ្លូវ|Road
+🚦|ភ្លើងចរាចរណ៍|Traffic light
+⛽|ឥន្ធនៈ|Fuel
+🛞|កង់ឡាន|Tire
+🪢|ខ្សែពួរ|Rope
+🎨|ថ្នាំលាប|Paint
+🔩|វីស|Screw
+📖|ទស្សនាវដ្តី|Magazine
+🖼️|ស៊ុមរូប|Frame
+🕰️|នាឡិកាជញ្ជាំង|Wall clock
+⚖️|ជញ្ជីង|Scale
+♟️|ក្តារអុក|Chess
+🎶|ខ្លុយ|Flute
+💉|សឺរាុំង|Syringe
+🧴|ក្រែមលាបមុខ|Face cream
+🧴|ទឹកអប់|Perfume
+🪑|កៅអីយូរ|Stool
+🛏️|ពូក|Mattress
+💡|ចង្កៀង|Lamp
+🔦|ពិលដៃ|Torch
+📮|ប្រអប់សំបុត្រ|Mailbox
+📒|សៀវភៅកត់ត្រាតូច|Notepad
+📌|ម្ជុលខ្ទាស់|Pin
+🧲|ម៉ាញ៉េទិច|Magnet
+🔭|កែវយឹត|Telescope
+🔬|មីក្រូទស្សន៍|Microscope
+🧮|ម៉ាស៊ីនគិតលេខ|Calculator
+🛗|ជណ្តើរយន្ត|Elevator
+🏠|ដំបូល|Roof
+🪵|ឈើ|Wood
+⛏️|ប្រដាប់ជីក|Pickaxe
+🪓|ពូថៅ|Axe
+🪤|អន្ទាក់|Trap
+🛶|ទូកតូច|Small boat
+🧳|វ៉ាលិស|Suitcase
+🏮|ភ្លើងចង្កៀងក្រដាស|Lantern
+🧰|ប្រអប់ថ្នាំ|Medicine box
+🪑|តុបាយ|Dining table
+🪑|តុសរសេរ|Desk
+🚪|ទ្វារបន្ទប់|Room door
+🪟|វាំងននបង្អួច|Curtain
+🧱|ជញ្ជាំង|Wall
+🏪|ហាងលក់|Shop
+🛕|វត្ត|Temple
+🌳|ឧទ្យាន|Park
+🛏️|គ្រែពីរជាន់|Bunk bed
+🧴|ម្សៅបោកគក់|Laundry powder
+🛍️|ស្បោង|Plastic bag
+🔗|ច្រវ៉ាក់|Chain`),false,"ពាក្យ");
+mk("o",P(`#e53935|ក្រហម|Red
+#fb8c00|ទឹកក្រូច|Orange
+#fdd835|លឿង|Yellow
+#43a047|បៃតង|Green
+#1e88e5|ខៀវ|Blue
+#8e24aa|ស្វាយ|Purple
+#f48fb1|ផ្កាឈូក|Pink
+#6d4c41|ត្នោត|Brown
+#111111|ខ្មៅ|Black
+#ffffff|ស|White
+#9e9e9e|ប្រផេះ|Gray
+#d4af37|មាស|Gold
+#c0c0c0|ប្រាក់|Silver
+#4fc3f7|ខៀវមេឃ|Sky blue
+#1a237e|ខៀវចាស់|Navy blue
+#a5d6a7|បៃតងស្រាល|Mint green
+#1b5e20|បៃតងចាស់|Dark green
+#cddc39|បៃតងលឿង|Lime
+#808000|អូលីវ|Olive
+#009688|ខៀវបៃតង|Teal
+#26c6da|ទឹកសមុទ្រ|Turquoise
+#3f51b5|ខៀវស្វាយ|Indigo
+#b39ddb|ស្វាយខ្ចី|Lavender
+#c2185b|ក្រហមស្វាយ|Magenta
+#800000|ក្រហមចាស់|Maroon
+#b22222|ឥដ្ឋ|Brick red
+#ff7f50|ផ្កាថ្ម|Coral
+#ffcc80|ផ្លែប៉េស|Peach
+#fff3d6|ក្រែម|Cream
+#bcaaa4|ត្នោតខ្ចី|Tan`),true,"ពណ៌");
+mk("f",P(`🥭|ស្វាយ|Mango
+🍌|ចេក|Banana
+🍎|ប៉ោម|Apple
+🍊|ក្រូចពោធិ៍សាត់|Orange
+🍊|ក្រូចថ្លុង|Pomelo
+🍋|ក្រូចឆ្មារ|Lemon
+🍋|ក្រូចឆ្មារបៃតង|Lime
+🍊|ក្រូចសើច|Kaffir lime
+🍊|ម៉ង់ដារីន|Mandarin
+🍊|តង់ហ្សឺរីន|Tangerine
+🍊|ក្រេបហ្វ្រូត|Grapefruit
+🍇|ទំពាំងបាយជូរ|Grapes
+🍉|ឪឡឹក|Watermelon
+🍍|ម្នាស់|Pineapple
+🥥|ដូង|Coconut
+🍈|ល្ហុង|Papaya
+🍈|ទុរេន|Durian
+🍑|មង្ឃុត|Mangosteen
+🍓|ស្រកានាគ|Dragon fruit
+🍎|ជម្ពូ|Rose apple
+🍈|ខ្នុរ|Jackfruit
+🍐|ត្របែក|Guava
+🍎|ទទឹម|Pomegranate
+🥭|ស្វាយកែវរមៀត|Keo Romeat mango
+🍒|លីឆី|Lychee
+🍒|រ៉ាំបូតង់|Rambutan
+🍒|សឺរី|Cherry
+🍓|ស្ត្របឺរី|Strawberry
+🫐|ប៊្លូបឺរី|Blueberry
+🍓|រ៉ាស្ប៊ឺរី|Raspberry
+🫐|ប្លែកបឺរី|Blackberry
+🍒|ក្រាន់បឺរី|Cranberry
+🍐|ពែរ|Pear
+🍑|ប៉េស|Peach
+🍑|អាប្រីកុត|Apricot
+🍑|ព្រូន|Plum
+🍑|នេកតារីន|Nectarine
+🥝|ឃីវី|Kiwi
+🍈|ល្វា|Fig
+🥑|អាវ៉ូកាដូ|Avocado
+🫒|អូលីវ|Olive
+🍈|ត្រឡាច|Melon
+🍈|កាតាឡូប|Cantaloupe
+🍑|ផាសិនហ្វ្រូត|Passion fruit
+🍑|ភើស៊ីមុន|Persimmon
+🍈|ស្តារហ្វ្រូត|Starfruit
+🍎|ក្វីន|Quince
+🍌|ចេកអំបូង|Plantain
+🍈|ល្មុត|Sapodilla
+🍈|អំពិល|Tamarind
+🍈|ពុទ្រា|Jujube
+🍑|ស្វាយចន្ទី|Cashew apple
+🍈|ណូនី|Noni
+🍇|ទំពាំងបាយជូរក្រហម|Red grapes
+🍇|ទំពាំងបាយជូរបៃតង|Green grapes
+🍇|ទំពាំងបាយជូរខ្មៅ|Black grapes
+🍇|ទំពាំងបាយជូរក្រៀម|Raisin
+🍑|ព្រូនក្រៀម|Prune
+🥭|ស្វាយខ្ចី|Green mango
+🥭|ស្វាយទុំ|Ripe mango
+🍌|ចេកទុំ|Ripe banana
+🍌|ចេកខ្ចី|Green banana
+🍎|ប៉ោមក្រហម|Red apple
+🍏|ប៉ោមបៃតង|Green apple
+🥥|ដូងខ្ចី|Young coconut
+🥥|ដូងចាស់|Mature coconut
+🍉|ឪឡឹកក្រហម|Red watermelon
+🍈|ល្ហុងទុំ|Ripe papaya
+🍈|ល្ហុងខ្ចី|Green papaya
+🍍|ម្នាស់ទុំ|Ripe pineapple
+🍈|ខ្នុរទុំ|Ripe jackfruit
+🍈|ទុរេនទុំ|Ripe durian
+🍅|ប៉េងប៉ោះ|Tomato
+🥒|ត្រសក់|Cucumber
+🎃|ល្ពៅ|Pumpkin
+🍈|ហ៊ានីដ្យូ|Honeydew
+🍑|ឌេត|Date
+🍇|មូលបឺរី|Mulberry
+🍇|គូសបឺរី|Gooseberry
+🍈|ឡូក្វាត|Loquat
+🍈|សាឡាក់|Salak
+🍈|ឡង់សាត់|Langsat
+🍒|ប្លែកខឺរ៉ង់|Blackcurrant
+🍒|រ៉េដខឺរ៉ង់|Redcurrant
+🍈|ទុរេនបារាំង|Soursop
+🍎|ផ្លែឈើ|Fruit
+🥗|សាឡាតផ្លែឈើ|Fruit salad
+🧃|ទឹកផ្លែឈើ|Fruit juice
+🧃|ទឹកក្រូច|Orange juice
+🥥|ទឹកដូង|Coconut water
+🍇|ផ្លែឈើក្រៀម|Dried fruit
+🍊|សំបកក្រូច|Orange peel
+🍌|សំបកចេក|Banana peel
+🍑|គ្រាប់|Seed
+🍋|ទឹកក្រូចឆ្មារ|Lemon juice
+🍉|ទឹកឪឡឹក|Watermelon juice
+🍍|ទឹកម្នាស់|Pineapple juice
+🥭|ទឹកស្វាយ|Mango juice
+🍎|ទឹកប៉ោម|Apple juice
+🍎|ប៉ោមលឿង|Yellow apple
+🍓|ប៊ឺរី|Berry
+🍊|ក្រូច|Citrus
+🍎|ផ្លែឈើទុំ|Ripe fruit
+🍏|ផ្លែឈើខ្ចី|Unripe fruit
+😋|ផ្អែម|Sweet
+😖|ជូរ|Sour
+😣|ល្វីង|Bitter
+🧂|ប្រៃ|Salty
+🌶️|ហឹរ|Spicy
+🌶️|ម្ទេស|Chili
+🍊|ក្លេម៉ង់ទីន|Clementine
+🍊|ក្រូចឈាម|Blood orange
+🍊|ក្រូចកុមក្វាត|Kumquat
+🍋|យូហ្ស៊ូ|Yuzu
+🍋|បឺហ្គាម៉ុត|Bergamot
+🍊|កាឡាម៉ានស៊ី|Calamansi
+🍈|ឆេរីម៉ូយ៉ា|Cherimoya
+🍅|តាម៉ារីឡូ|Tamarillo
+🍈|ហ្វីសាលីស|Physalis
+🍈|ហ្វីជូអា|Feijoa
+🍈|អាកគី|Ackee
+🍈|ប្រេដហ្វ្រូត|Breadfruit
+🍈|ប៊ីលីមប៊ី|Bilimbi
+🍈|គីវ៉ាណូ|Kiwano
+🍒|ឡុងកង់|Longan
+🍈|សាន់តុល|Santol
+🍈|ម៉ាមី|Mamey
+🍇|អេលឌើបឺរី|Elderberry
+🍒|កូជីបឺរី|Goji berry
+🫐|អាសាអ៊ី|Acai berry
+🫐|លីងហ្គនបឺរី|Lingonberry
+🫐|ប៊យសិនបឺរី|Boysenberry
+🍓|ផ្លែបឺរី|Berry
+🍎|ផ្លែឈើព្រៃ|Wild fruit
+🍍|ផ្លែឈើត្រូពិច|Tropical fruit
+🍎|ផ្លែឈើស្រស់|Fresh fruit
+🍋|ផ្លែឈើជូរ|Sour fruit
+🍯|ផ្លែឈើផ្អែម|Sweet fruit
+🥫|ផ្លែឈើកំប៉ុង|Canned fruit
+🍨|ការ៉េមផ្លែឈើ|Fruit ice cream
+🥤|ស្មូធី|Smoothie
+🍓|ជែម|Jam
+🧺|កន្ត្រកផ្លែឈើ|Fruit basket
+🍽️|ចានផ្លែឈើ|Fruit plate
+🌳|ដើមឈើ|Fruit tree
+🍃|ស្លឹក|Leaf
+🌸|ផ្កា|Flower
+🌳|ចម្ការ|Orchard
+🍇|ទឹកទំពាំងបាយជូរ|Grape juice
+🍊|ទឹកក្រូចថ្លុង|Pomelo juice
+🍓|ទឹកស្ត្របឺរី|Strawberry juice
+🫐|ទឹកប៊្លូបឺរី|Blueberry juice
+🍎|ទឹកទទឹម|Pomegranate juice
+🍐|ទឹកត្របែក|Guava juice
+🍓|ទឹកស្រកានាគ|Dragon fruit juice
+🥝|ទឹកឃីវី|Kiwi juice
+🍑|ទឹកផាសិនហ្វ្រូត|Passion fruit juice
+🍈|ទឹកអំពិល|Tamarind juice
+🍒|ទឹកលីឆី|Lychee juice
+🍑|ទឹកប៉េស|Peach juice
+🍐|ទឹកពែរ|Pear juice
+🍒|ទឹកសឺរី|Cherry juice
+🍊|ទឹកក្រេបហ្វ្រូត|Grapefruit juice
+🍑|ទឹកមង្ឃុត|Mangosteen juice
+🍈|ទឹកល្ហុង|Papaya juice
+🍌|ទឹកចេក|Banana juice
+🍈|ទឹកខ្នុរ|Jackfruit juice
+🍈|ទឹកទុរេន|Durian juice
+🍅|ទឹកប៉េងប៉ោះ|Tomato juice
+🥭|ស្វាយកែវរមៀតទុំ|Ripe Keo Romeat mango
+🥭|ស្វាយកែវរមៀតខ្ចី|Green Keo Romeat mango
+🍍|ម្នាស់ខ្ចី|Green pineapple
+🍉|ឪឡឹកលឿង|Yellow watermelon
+🥑|អាវ៉ូកាដូទុំ|Ripe avocado
+🥑|ទឹកអាវ៉ូកាដូ|Avocado smoothie
+🍊|ក្រូចពោធិ៍សាត់ទុំ|Ripe orange
+🍋|ក្រូចឆ្មារទុំ|Ripe lemon
+🍎|ប៉ោមស្រស់|Fresh apple
+🍌|ចេកស្រស់|Fresh banana
+🍇|ទំពាំងបាយជូរផ្អែម|Sweet grapes
+🍇|ទំពាំងបាយជូរជូរ|Sour grapes
+🍓|ស្ត្របឺរីទុំ|Ripe strawberry
+🍑|ប៉េសទុំ|Ripe peach
+🍐|ពែរទុំ|Ripe pear
+🍈|ត្របែកទុំ|Ripe guava
+🍈|ខ្នុរខ្ចី|Green jackfruit
+🥥|ដូងអាំង|Roasted coconut
+🥥|សាច់ដូង|Coconut meat
+🥥|សំបកដូង|Coconut shell
+🍌|ចេកអាំង|Grilled banana
+🍌|ចេកចៀន|Fried banana
+🍌|នំចេក|Banana cake
+🥭|ស្វាយជ្រក់|Pickled mango
+🍍|ម្នាស់ក្រៀម|Dried pineapple
+🥭|ស្វាយក្រៀម|Dried mango
+🍌|ចេកក្រៀម|Dried banana
+🍎|ប៉ោមក្រៀម|Dried apple
+🍓|ស្ត្របឺរីក្រៀម|Dried strawberry
+🍇|សាឡាតទំពាំងបាយជូរ|Grape salad
+🍉|ឪឡឹកកាត់|Sliced watermelon
+🍉|សំបកឪឡឹក|Watermelon rind
+🍈|គ្រាប់ល្ហុង|Papaya seed
+🍎|គ្រាប់ប៉ោម|Apple seed
+🍊|ចំណិតក្រូច|Orange segment
+🍋|បន្ទះក្រូចឆ្មារ|Lemon slice
+🍈|សាច់ផ្លែឈើ|Fruit pulp
+🍎|សំបកផ្លែឈើ|Fruit peel
+🍉|ឪឡឹកស្រស់|Fresh watermelon
+🍈|ល្ហុងស្រស់|Fresh papaya
+🥭|ស្វាយស្រស់|Fresh mango`),false,"ពាក្យ");
+})();
+(function(){
+const root=$("gm");let cat="d",lang=1,qs=[],i=0,sc=0,lock=false,list=[];
+function hasKm(){try{return speechSynthesis.getVoices().some(v=>v.lang.toLowerCase().replace("_","-").startsWith("km"))}catch(e){return false}}
+function say(t,l){try{const u=new SpeechSynthesisUtterance(t);u.lang=l;u.rate=.85;speechSynthesis.speak(u)}catch(e){}}
+function sh(a){a=a.slice();for(let j=a.length-1;j>0;j--){const k=Math.floor(Math.random()*(j+1));[a[j],a[k]]=[a[k],a[j]]}return a}
+function menu(){
+ const b=store.get("gbest",{}),k=cat+lang;
+ root.innerHTML='<h2 class="sh" style="margin-top:0">ជ្រើសប្រភេទ</h2><div class="mode2"><button id="g1" class="'+(cat==="d"?"on":"")+'">🏠 របស់ប្រើប្រាស់</button><button id="g2" class="'+(cat==="o"?"on":"")+'">🎨 ពណ៌</button></div><h2 class="sh">ជ្រើសភាសាចម្លើយ</h2><div class="mode2"><button id="g3" class="'+(lang===1?"on":"")+'">ជ្រើសជាខ្មែរ</button><button id="g4" class="'+(lang===2?"on":"")+'">ជ្រើសជា English</button></div><p class="m">១០ សំណួរ។ មើលរូប ឬពណ៌ ហើយជ្រើសឈ្មោះត្រឹមត្រូវ។ ពិន្ទុល្អបំផុត៖ '+(b[k]!=null?b[k]+" / 10":"-")+'</p><button class="b" id="gs" style="width:100%">▶ ចាប់ផ្តើម</button>';
+ $("g1").onclick=()=>{cat="d";menu()};$("g2").onclick=()=>{cat="o";menu()};
+ $("g3").onclick=()=>{lang=1;menu()};$("g4").onclick=()=>{lang=2;menu()};
+ $("gs").onclick=()=>{list=GD[cat];qs=sh(list).slice(0,10);i=0;sc=0;ask()}}
+function ask(){
+ lock=false;const q=qs[i];
+ const ops=sh([q].concat(sh(list.filter(x=>x!==q&&x[lang]!==q[lang])).slice(0,3)));
+ const vis=cat==="o"?'<div class="sw" style="background:'+q[0]+';width:96px;height:96px"></div>':'<div class="ae" style="font-size:4rem">'+q[0]+'</div>';
+ root.innerHTML='<div class="m">សំណួរ '+(i+1)+' / 10 · ពិន្ទុ '+sc+'</div><div class="bar"><div class="fill" style="width:'+i*10+'%"></div></div><div class="gq">'+vis+'<div id="gf" class="m" style="min-height:3em">តើនេះជាអ្វី?</div></div><div class="gop" id="go"></div><div id="gn"></div>';
+ ops.forEach(o=>{const b=document.createElement("button");b.textContent=o[lang];b.onclick=()=>{
+  if(lock)return;lock=true;const ok=o===q;if(ok)sc++;
+  b.className=ok?"ok":"no";
+  [...$("go").children].forEach((x,n)=>{if(ops[n]===q)x.className="ok"});
+  $("gf").innerHTML=(ok?"✅ ត្រូវហើយ!":"❌ ចម្លើយត្រឹមត្រូវ៖")+"<br><b>"+q[1]+" = "+q[2]+"</b>";
+  try{speechSynthesis.cancel()}catch(e){}
+  say(q[2],"en-US");if(hasKm())say(q[1],"km-KH");
+  $("gn").innerHTML='<button class="b" id="gx" style="width:100%;margin-top:10px">'+(i<9?"បន្ទាប់ →":"មើលលទ្ធផល")+'</button>';
+  $("gx").onclick=()=>{i++;i<10?ask():end()}};$("go").appendChild(b)})}
+function end(){
+ const b=store.get("gbest",{}),k=cat+lang;if(b[k]==null||sc>b[k]){b[k]=sc;store.set("gbest",b)}
+ root.innerHTML='<div class="gq"><div class="big">'+(sc>=8?"🏆":sc>=5?"👍":"💪")+' '+sc+' / 10</div><p class="m">'+(sc>=8?"ពូកែណាស់!":sc>=5?"ល្អហើយ សាកល្បងទៀត!":"កុំបោះបង់ សាកល្បងម្តងទៀត!")+'</p></div><button class="b" id="ga" style="width:100%">🔁 លេងម្តងទៀត</button><button class="g" id="gm2" style="width:100%;margin-top:8px;padding:8px">ត្រឡប់ទៅម៉ឺនុយ</button>';
+ $("ga").onclick=()=>{qs=sh(list).slice(0,10);i=0;sc=0;ask()};$("gm2").onclick=menu}
+menu()})();
+(function(){
+const R=[
+["ធ្វើល្អ បានផល ___","ល្អ",["អាក្រក់","ទាប","យឺត"],"ធ្វើអំពើល្អ នឹងទទួលបានលទ្ធផលល្អ។","Do good and you will receive good."],
+["និយាយពិត គេ ___","ទុកចិត្ត",["ស្អប់","ភ្លេច","ខ្លាច"],"និយាយពាក្យពិត នាំឱ្យអ្នកដទៃទុកចិត្ត។","Tell the truth and people will trust you."],
+["ខំប្រឹង ទើបបាន ___","ជោគជ័យ",["ងងុយដេក","ខឹង","ភ្លេច"],"ការព្យាយាមនាំទៅរកជោគជ័យ។","Effort leads to success."],
+["កូនល្អ តែងគោរព ___","ឪពុកម្តាយ",["ភ្លៀង","ឆ្មា","ខ្យល់"],"កូនល្អត្រូវគោរពឪពុកម្តាយ។","A good child respects their parents."],
+["ស្អាតខាងក្រៅ មិនស្មើស្អាតខាង ___","ក្នុង",["លើ","ក្រោយ","ឆ្វេង"],"ចិត្តល្អសំខាន់ជាងរូបរាងស្អាត។","A kind heart matters more than looks."],
+["ចាប់ផ្តើម ទើបអាច ___","បញ្ចប់",["ភ្លេច","ខ្លាច","លាក់"],"ត្រូវចាប់ផ្តើមធ្វើ ទើបអាចបញ្ចប់បាន។","You must begin before you can finish."],
+["មិត្តល្អ ជួយគ្នាពេល ___","លំបាក",["ដេក","ញ៉ាំបាយ","ដើរលេង"],"មិត្តល្អជួយគ្នាពេលមានការលំបាក។","A good friend helps in hard times."],
+["ពាក្យទន់ភ្លន់ ធ្វើឱ្យចិត្ត ___","ស្ងប់",["ក្តៅ","ឈឺ","ខ្លាច"],"ពាក្យទន់ភ្លន់ធ្វើឱ្យចិត្តស្ងប់។","Gentle words calm the heart."],
+["សន្សំតិចៗ ទៅជា ___","ច្រើន",["អស់","បាត់","ចាស់"],"សន្សំបន្តិចម្តងៗ ទៅជាច្រើន។","Save a little at a time and it adds up."],
+["កុំនិយាយ ដោយមិន ___","គិត",["ញ៉ាំ","ដេក","លេង"],"គិតមុននិយាយ។","Think before you speak."],
+["ធ្លាប់ខុស ត្រូវរៀន ហើយកែ ___","ខ្លួន",["ផ្ទះ","ទឹក","ព្រៃ"],"កំហុសជាមេរៀន ត្រូវកែលម្អខ្លួន។","Learn from mistakes and improve yourself."],
+["ស្តាប់ច្រើន និយាយ ___","តិច",["ខ្លាំង","យូរ","ឆាប់"],"ស្តាប់ឱ្យបានច្រើន ហើយនិយាយឱ្យតិច។","Listen more, speak less."],
+["ធ្វើចំពោះអ្នកដទៃ ដូចខ្លួនចង់ឱ្យគេធ្វើចំពោះ ___","ខ្លួន",["ឆ្កែ","ផ្ទះ","ផ្លូវ"],"ប្រព្រឹត្តចំពោះអ្នកដទៃ ដូចអ្វីដែលអ្នកចង់ទទួលបាន។","Treat others as you want to be treated."],
+["ខ្ជិល ធ្វើឱ្យ ___","ក្រ",["ឆ្លាត","មាន","ស្អាត"],"ភាពខ្ជិលនាំឱ្យក្រីក្រ។","Laziness leads to poverty."],
+["ស្មោះត្រង់ ជា ___ របស់មនុស្ស","គុណធម៌",["ស្បែកជើង","ឆត្រ","កៅអី"],"ភាពស្មោះត្រង់ជាគុណធម៌ដ៏ល្អ។","Honesty is a great virtue."]];
+const root=$("pg");let cur=0,tries=0,ops=[];
+const sh=a=>{a=a.slice();for(let j=a.length-1;j>0;j--){const k=Math.floor(Math.random()*(j+1));[a[j],a[k]]=[a[k],a[j]]}return a};
+const st=()=>store.get("prov",{});
+const open=i=>i===0||(st()[i-1]||0)>0;
+function hasKm(){try{return speechSynthesis.getVoices().some(v=>v.lang.toLowerCase().replace("_","-").startsWith("km"))}catch(e){return false}}
+function say(t,l){try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang=l;u.rate=.85;speechSynthesis.speak(u)}catch(e){}}
+function map(){
+ const s=st(),tot=Object.values(s).reduce((a,b)=>a+b,0);
+ let h='<p class="m">⭐ '+tot+' / '+R.length*3+' · ឆ្លើយត្រូវ ដើម្បីបើកបន្ទប់បន្ទាប់។ ឆ្លើយត្រូវលើកដំបូងបាន ៣ ផ្កាយ។</p>';
+ for(let L=0;L<3;L++){
+  h+='<h2 class="sh">ជាន់ទី '+(L+1)+' · '+["ងាយ","មធ្យម","ពិបាក"][L]+'</h2><div class="rg">';
+  for(let r=0;r<5;r++){const i=L*5+r,v=s[i]||0;
+   h+='<button data-i="'+i+'"'+(open(i)?"":" disabled")+(v?' class="dn"':"")+'>'+(open(i)?(v?"⭐".repeat(v):"🚪")+"<br>"+(r+1):"🔒")+'</button>'}
+  h+='</div>'}
+ root.innerHTML=h;
+ root.querySelectorAll("button[data-i]").forEach(b=>b.onclick=()=>room(+b.dataset.i))}
+function room(i){
+ cur=i;tries=0;const q=R[i];ops=sh([q[1]].concat(q[2]));
+ root.innerHTML='<div class="m">ជាន់ទី '+(Math.floor(i/5)+1)+' · បន្ទប់ទី '+(i%5+1)+'</div><div class="bar"><div class="fill" style="width:'+i/R.length*100+'%"></div></div><div class="pv" id="pt">'+q[0].replace("___","<u>&nbsp;&nbsp;&nbsp;&nbsp;?&nbsp;&nbsp;&nbsp;&nbsp;</u>")+'</div><div class="gop" id="po"></div><div id="pf" class="m" style="text-align:center;min-height:3em"></div><div id="pn"></div><button class="g" id="pb" style="margin-top:10px">← ផែនទី</button>';
+ $("pb").onclick=map;
+ ops.forEach(o=>{const b=document.createElement("button");b.textContent=o;b.onclick=()=>pick(b,o);$("po").appendChild(b)})}
+function pick(b,o){
+ const q=R[cur];if(o!==q[1]){tries++;b.className="no";b.disabled=true;$("pf").textContent="❌ មិនទាន់ត្រូវទេ សាកល្បងម្តងទៀត";return}
+ const stars=Math.max(3-tries,1),s=st();if((s[cur]||0)<stars){s[cur]=stars;store.set("prov",s)}
+ b.className="ok";[...$("po").children].forEach(x=>x.disabled=true);
+ $("pt").textContent=q[0].replace("___",q[1]);
+ $("pf").innerHTML='✅ ត្រូវហើយ! '+"⭐".repeat(stars)+'<br>'+q[3]+'<br><i>'+q[4]+'</i><br><button class="g" id="ps">🔊 ខ្មែរ</button> <button class="g" id="pe">🔊 EN</button>';
+ $("ps").onclick=()=>{if(!hasKm()){$("pf").insertAdjacentHTML("beforeend","<br>ឧបករណ៍មិនមានសំឡេងខ្មែរ");return}say(q[0].replace("___",q[1]),"km-KH")};
+ $("pe").onclick=()=>say(q[4],"en-US");
+ const last=cur===R.length-1,endL=cur%5===4;
+ $("pn").innerHTML='<button class="b" id="px" style="width:100%;margin-top:8px">'+(last?"🏆 ចប់ហើយ! មើលផែនទី":endL?"🎉 ចប់ជាន់ → ជាន់បន្ទាប់":"បន្ទប់បន្ទាប់ →")+'</button>';
+ $("px").onclick=()=>last?map():room(cur+1)}
+map()})();
+(function(){
+const root=$("ag2");let lv=0,kh=false,n=0,sc=0,a=0,b=0,tr=0,lock=false;
+const LV=[["ងាយ (១-១០)",1,10],["មធ្យម (១-៥០)",1,50],["ពិបាក (១០-៩៩)",10,99]];
+const K="០១២៣៤៥៦៧៨៩",f=x=>kh?String(x).split("").map(c=>K[+c]).join(""):String(x);
+const rnd=(l,h)=>l+Math.floor(Math.random()*(h-l+1));
+function say(t){try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang="en-US";u.rate=.85;speechSynthesis.speak(u)}catch(e){}}
+function menu(){
+ const bs=store.get("abest",{}),k=lv+(kh?"k":"a");
+ root.innerHTML='<h2 class="sh" style="margin-top:0">កម្រិត</h2><div class="mode2" id="al"></div><h2 class="sh">ប្រភេទលេខ</h2><div class="mode2"><button id="a1" class="'+(kh?"":"on")+'">1 2 3</button><button id="a2" class="'+(kh?"on":"")+'">១ ២ ៣</button></div><p class="m">១០ សំណួរ។ ជ្រើសចម្លើយត្រឹមត្រូវ។ ឆ្លើយត្រូវលើកដំបូងបាន ១ ពិន្ទុ។ ពិន្ទុល្អបំផុត៖ '+(bs[k]!=null?bs[k]+" / 10":"-")+'</p><button class="b" id="as" style="width:100%">▶ ចាប់ផ្តើម</button>';
+ LV.forEach((l,i)=>{const x=document.createElement("button");x.textContent=l[0];x.className=i===lv?"on":"";x.onclick=()=>{lv=i;menu()};$("al").appendChild(x)});
+ $("a1").onclick=()=>{kh=false;menu()};$("a2").onclick=()=>{kh=true;menu()};
+ $("as").onclick=()=>{n=0;sc=0;ask()}}
+function ask(){
+ lock=false;tr=0;const L=LV[lv];a=rnd(L[1],L[2]);b=rnd(L[1],L[2]);const c=a+b;
+ const s=new Set([c]);let g=0;while(s.size<4&&g++<99){const d=[1,2,3,10,-1,-2,-3,-10][rnd(0,7)],v=c+d;if(v>0)s.add(v)}
+ const ops=[...s].sort(()=>Math.random()-.5);
+ root.innerHTML='<div class="m">សំណួរ '+(n+1)+' / 10 · ពិន្ទុ '+sc+'</div><div class="bar"><div class="fill" style="width:'+n*10+'%"></div></div><div class="pv" style="font-size:2.2rem">'+f(a)+' + '+f(b)+' = ?</div><div class="gop" id="ao"></div><div id="af" class="m" style="text-align:center;min-height:2.6em"></div><div id="an2"></div><div style="display:flex;gap:8px;margin-top:8px"><button class="g" id="ah">🔊 ស្តាប់សំណួរ</button><button class="g" id="abk">← ត្រឡប់ក្រោយ</button></div>';
+ $("ah").onclick=()=>say(a+" plus "+b);
+ $("abk").onclick=menu;
+ ops.forEach(v=>{const x=document.createElement("button");x.textContent=f(v);x.onclick=()=>{
+  if(lock)return;
+  if(v!==c){tr++;x.className="no";x.disabled=true;$("af").textContent="❌ មិនទាន់ត្រូវទេ សាកល្បងម្តងទៀត";return}
+  lock=true;if(tr===0)sc++;x.className="ok";[...$("ao").children].forEach(y=>y.disabled=true);
+  $("af").innerHTML="✅ ត្រូវហើយ! <b>"+f(a)+" + "+f(b)+" = "+f(c)+"</b>";say(a+" plus "+b+" equals "+c);
+  $("an2").innerHTML='<button class="b" id="ax" style="width:100%;margin-top:8px">'+(n<9?"បន្ទាប់ →":"មើលលទ្ធផល")+'</button>';
+  $("ax").onclick=()=>{n++;n<10?ask():end()}};$("ao").appendChild(x)})}
+function end(){
+ const bs=store.get("abest",{}),k=lv+(kh?"k":"a");if(bs[k]==null||sc>bs[k]){bs[k]=sc;store.set("abest",bs)}
+ root.innerHTML='<div class="gq"><div class="big">'+(sc>=8?"🏆":sc>=5?"👍":"💪")+' '+sc+' / 10</div><p class="m">'+(sc>=8?"ពូកែណាស់!":sc>=5?"ល្អហើយ សាកល្បងទៀត!":"កុំបោះបង់ សាកល្បងម្តងទៀត!")+'</p></div><button class="b" id="ar" style="width:100%">🔁 លេងម្តងទៀត</button><button class="g" id="am" style="width:100%;margin-top:8px;padding:8px">ត្រឡប់ទៅម៉ឺនុយ</button>';
+ $("ar").onclick=()=>{n=0;sc=0;ask()};$("am").onclick=menu}
+menu()})();
+(function(){
+const root=$("pz");let cat="o",w=[],n=0,sc=0,ans=[],tl=[],item,word="",tr=0,lock=false;
+const CN={o:"🎨 ពណ៌",f:"🍎 ផ្លែឈើ",d:"🏠 របស់ប្រើប្រាស់"};
+const sh=a=>{a=a.slice();for(let j=a.length-1;j>0;j--){const k=Math.floor(Math.random()*(j+1));[a[j],a[k]]=[a[k],a[j]]}return a};
+function hasKm(){try{return speechSynthesis.getVoices().some(v=>v.lang.toLowerCase().replace("_","-").startsWith("km"))}catch(e){return false}}
+function say(t,l){try{const u=new SpeechSynthesisUtterance(t);u.lang=l;u.rate=.85;speechSynthesis.speak(u)}catch(e){}}
+function menu(){
+ root.innerHTML='<h2 class="sh" style="margin-top:0">🧩 ហ្គេមផ្គុំពាក្យ</h2><p class="m">មើលរូប ឬពណ៌ ហើយផ្គុំអក្សរអង់គ្លេសឱ្យបានពាក្យត្រឹមត្រូវ។ ជ្រើសប្រភេទ៖</p><div class="mode2" id="zc"></div><button class="b" id="zs" style="width:100%;margin-top:6px">▶ ចាប់ផ្តើម</button>';
+ Object.keys(CN).forEach(k=>{const b=document.createElement("button");b.textContent=CN[k];b.className=k===cat?"on":"";b.onclick=()=>{cat=k;menu()};$("zc").appendChild(b)});
+ $("zs").onclick=()=>{const p=GD[cat].filter(a=>/^[A-Za-z]+$/.test(a[2])&&a[2].length>=3&&a[2].length<=8);w=sh(p).slice(0,10);n=0;sc=0;next()}}
+function next(){
+ item=w[n];word=item[2].toUpperCase();tr=0;lock=false;ans=[];
+ let t;do{t=sh(word.split(""))}while(t.join("")===word&&word.length>1);
+ tl=t;draw("")}
+function draw(msg){
+ const vis=cat==="o"?'<div class="sw" style="background:'+item[0]+';width:80px;height:80px"></div>':'<div class="ae" style="font-size:3.4rem">'+item[0]+'</div>';
+ root.innerHTML='<div class="m">សំណួរ '+(n+1)+' / '+w.length+' · ពិន្ទុ '+sc+'</div><div class="bar"><div class="fill" style="width:'+n/w.length*100+'%"></div></div><div class="gq">'+vis+'<div class="ak">'+item[1]+'</div></div><div class="tr" id="zl"></div><div class="tr" id="zt"></div><div id="zf" class="m" style="text-align:center;min-height:2.6em">'+msg+'</div><div id="zn"></div><div style="display:flex;gap:8px;margin-top:8px;flex-wrap:wrap"><button class="g" id="zh">💡 ជំនួយ</button><button class="g" id="zb">⌫ លុប</button><button class="g" id="zk">← ត្រឡប់ក្រោយ</button></div>';
+ const L=$("zl");
+ for(let i=0;i<word.length;i++){const b=document.createElement("button");b.className="sl";b.textContent=ans[i]!=null?tl[ans[i]]:"_";b.onclick=()=>{if(lock||ans[i]==null)return;ans.splice(i,1);draw("")};L.appendChild(b)}
+ tl.forEach((c,i)=>{const b=document.createElement("button");b.textContent=c;b.disabled=ans.includes(i);b.onclick=()=>pick(i);$("zt").appendChild(b)});
+ $("zb").onclick=()=>{if(!lock){ans.pop();draw("")}};
+ $("zk").onclick=menu;
+ $("zh").onclick=()=>{if(lock)return;let k=0;while(k<ans.length&&tl[ans[k]]===word[k])k++;ans.length=k;
+  const j=tl.findIndex((c,i)=>!ans.includes(i)&&c===word[k]);if(j>=0){ans.push(j);tr++}
+  ans.length===word.length?check():draw("💡 ជំនួយ")};
+ if(lock)win()}
+function pick(i){if(lock||ans.includes(i))return;ans.push(i);ans.length===word.length?check():draw("")}
+function check(){
+ const g=ans.map(i=>tl[i]).join("");
+ if(g===word){lock=true;if(tr===0)sc++;draw("");return}
+ tr++;draw("❌ មិនទាន់ត្រូវទេ សាកល្បងម្តងទៀត");
+ [...$("zl").children].forEach(b=>b.className="sl no");
+ setTimeout(()=>{if(!lock){ans=[];draw("")}},900)}
+function win(){
+ [...$("zl").children].forEach(b=>b.className="sl ok");
+ $("zf").innerHTML="✅ ត្រូវហើយ! <b>"+item[1]+" = "+item[2]+"</b>";
+ try{speechSynthesis.cancel()}catch(e){}
+ say(item[2],"en-US");if(hasKm())say(item[1],"km-KH");
+ $("zn").innerHTML='<button class="b" id="zx" style="width:100%;margin-top:8px">'+(n<w.length-1?"បន្ទាប់ →":"មើលលទ្ធផល")+'</button>';
+ $("zx").onclick=()=>{n++;n<w.length?next():end()}}
+function end(){
+ root.innerHTML='<div class="gq"><div class="big">'+(sc>=8?"🏆":sc>=5?"👍":"💪")+' '+sc+' / '+w.length+'</div><p class="m">'+(sc>=8?"ពូកែណាស់!":sc>=5?"ល្អហើយ សាកល្បងទៀត!":"កុំបោះបង់ សាកល្បងម្តងទៀត!")+'</p></div><button class="b" id="zr" style="width:100%">🔁 លេងម្តងទៀត</button><button class="g" id="zm" style="width:100%;margin-top:8px;padding:8px">ត្រឡប់ទៅម៉ឺនុយ</button>';
+ $("zr").onclick=()=>{w=sh(w);n=0;sc=0;next()};$("zm").onclick=menu}
+menu()})();
+go(store.get("tab2",0));
+</script>
+</body>
+</html>
