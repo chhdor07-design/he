@@ -105,6 +105,21 @@ h2.sh{font-size:.92rem;margin:12px 0 6px;color:var(--muted)}
 .tr button:disabled{opacity:.3;cursor:default}
 .tr button.ok{background:#2e9e6b;color:#fff;border-color:#2e9e6b;opacity:1}
 .tr button.no{background:#d64545;color:#fff;border-color:#d64545;opacity:1}
+#wm{display:none;position:fixed;inset:0;background:rgba(0,0,0,.8);z-index:20;align-items:center;justify-content:center;padding:16px}
+#wm.on{display:flex}
+.sc{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:10px}
+.sc a{display:block;text-decoration:none;text-align:center;padding:16px 8px;border-radius:14px;border:1px solid var(--line);background:var(--card);color:var(--text);font-weight:700}
+.sc a .i{display:block;font-size:2.4rem;line-height:1.2}
+.sc a small{display:block;color:var(--muted);font-weight:400;font-size:.78rem;word-break:break-all}
+.sc a.off{opacity:.55}
+#fab{position:fixed;left:0;top:0;z-index:15;width:56px;height:56px;border-radius:16px;border:1px solid rgba(255,255,255,.25);background:rgba(30,40,70,.78);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);color:#fff;font-size:1.7rem;cursor:pointer;touch-action:none;opacity:.85;box-shadow:0 4px 14px rgba(0,0,0,.4);padding:0}
+#fpn{position:fixed;inset:0;z-index:16;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.35)}
+#fpn.on{display:flex}
+.fp{background:rgba(24,32,58,.94);border-radius:24px;padding:14px;width:min(86vw,300px)}
+.fg{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.fi{font:inherit;background:rgba(255,255,255,.1);color:#fff;border:0;border-radius:16px;padding:12px 4px;cursor:pointer;font-size:.78rem}
+.fi span{display:block;font-size:1.7rem}
+a.fi{display:block;text-decoration:none;text-align:center}
 </style>
 </head>
 <body>
@@ -113,6 +128,7 @@ h2.sh{font-size:.92rem;margin:12px 0 6px;color:var(--muted)}
 <p class="m" style="margin:0 0 6px">👈 <span class="rb">អូសទៅឆ្វេង ដើម្បីមើលម៉ឺនុយច្រើនទៀត</span></p>
 <p class="m" style="margin:0">🤖<span class="rb">Creator cloud ai v5.5</span></p>
 <p class="m" style="margin:0 0 6px">🔨<span class="rb">Devoloper piseth chorda v0.1</span></p>
+<p class="m" style="margin:0 0 6px" id="uc">👥 អ្នកប្រើប្រាស់៖ <b id="ucn">—</b> <span id="ucl"></span></p>
 <div class="tabs" id="tabs"></div>
 
 <div class="pane" id="pall"><p class="m">ម៉ឺនុយទាំងអស់ ចុចលើផ្ទាំងណាមួយដើម្បីចូល។</p><div class="al" id="allg"></div></div>
@@ -141,6 +157,7 @@ h2.sh{font-size:.92rem;margin:12px 0 6px;color:var(--muted)}
 </div>
 
 <div class="pane" id="p3">
+<div class="card"><small class="m">🎯 របស់ដែលចង់បាន</small><input id="wn" placeholder="ឧ. ទូរស័ព្ទថ្មី ម៉ូតូ កង់" style="margin:6px 0"><img id="wi" alt="" style="display:none;width:100%;max-height:230px;object-fit:cover;border-radius:12px;cursor:pointer;margin-bottom:8px"><input type="file" id="wf" accept="image/*" hidden><div class="row"><button class="b" id="wb">📷 ដាក់រូបថត</button><button class="g" id="wx" style="display:none">លុបរូប</button></div><p class="m" style="margin:6px 0 0">ចុចលើរូបថត ឬពេលសន្សំ រូបនឹងលោតបង្ហាញ។</p></div>
 <div class="card"><div class="row">
 <div class="f"><small>គោលដៅសរុប</small><input id="sg" type="number" min="1" inputmode="numeric"></div>
 <div class="f"><small>សន្សំក្នុងមួយថ្ងៃ</small><input id="sd" type="number" min="1" inputmode="numeric"></div>
@@ -220,14 +237,17 @@ h2.sh{font-size:.92rem;margin:12px 0 6px;color:var(--muted)}
 <div class="ag" id="fg"></div>
 </div>
 <div class="pane" id="p17"><div class="card" id="ag2"></div></div>
+<div class="pane" id="p18"><p class="m">ចុចលើរូបតំណាង ដើម្បីទៅកាន់គណនីរបស់ខ្ញុំ។ ត្រូវការអ៊ីនធឺណិតដើម្បីបើកតំណ។</p><div class="sc" id="soc"></div></div>
 </main>
 <div id="y_msg"></div>
+<button id="fab" aria-label="ម៉ឺនុយរហ័ស">💬</button><div id="fpn"><div class="fp"><div class="fg" id="fgr"></div></div></div>
+<div id="wm"><div class="card" style="max-width:420px;width:100%;text-align:center"><img id="wmi" alt="" style="width:100%;max-height:60vh;object-fit:cover;border-radius:12px"><p class="big" id="wmt" style="margin:8px 0 0"></p><p class="m" id="wmm"></p><button class="b" id="wmc" style="width:100%">បិទ</button></div></div>
 <script>
 const $=id=>document.getElementById(id);
 const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
 
 /* tabs */
-const names=["📋 All","🔐 សុវត្ថិភាព","⏱️ ពាក្យសម្ងាត់","🧮 គិតលេខ","💰 សន្សំលុយ","🔤 ព្យញ្ជនៈ","🔤 ស្រៈ","🔠 ABC","🔢 លេខ ១-១០០","📅 ខែ","🗓️ ថ្ងៃ","📆 ថ្ងៃទី","🐾 សត្វ","🏠 របស់ប្រើប្រាស់","🎨 ពណ៌","🎮 ហ្គេម","📜 ពាក្យប្រដៅ","🍎 ផ្លែឈើ","➕ បូកលេខ"];
+const names=["📋 All","🔐 សុវត្ថិភាព","⏱️ ពាក្យសម្ងាត់","🧮 គិតលេខ","💰 សន្សំលុយ","🔤 ព្យញ្ជនៈ","🔤 ស្រៈ","🔠 ABC","🔢 លេខ ១-១០០","📅 ខែ","🗓️ ថ្ងៃ","📆 ថ្ងៃទី","🐾 សត្វ","🏠 របស់ប្រើប្រាស់","🎨 ពណ៌","🎮 ហ្គេម","📜 ពាក្យប្រដៅ","🍎 ផ្លែឈើ","➕ បូកលេខ","💬 ទំនាក់ទំនង"];
 names.forEach((n,i)=>{const b=document.createElement("button");b.textContent=n;b.onclick=()=>go(i);$("tabs").appendChild(b)});
 function go(i){document.querySelectorAll(".pane").forEach((p,j)=>p.classList.toggle("on",i===j));[...$("tabs").children].forEach((b,j)=>b.classList.toggle("on",i===j));store.set("tab2",i);window.scrollTo(0,0)}
 names.forEach((n,i)=>{if(!i)return;const b=document.createElement("button");b.textContent=n;b.onclick=()=>go(i);$("allg").appendChild(b)});
@@ -329,6 +349,27 @@ sr();
    $("sg").value=sv.goal;$("sd").value=sv.daily;$("sc").value=sv.cur;sr();alert("បានបញ្ចូលទិន្នន័យ ✓")}catch(e){alert("កូដមិនត្រឹមត្រូវទេ")}};
 })();
 
+(function(){
+ const img=$("wi"),m=$("wm");let last=sv.entries.length;
+ function show(){if(sv.photo){img.src=sv.photo;img.style.display="block";$("wx").style.display="inline-block"}else{img.style.display="none";$("wx").style.display="none"}$("wn").value=sv.item||""}
+ show();
+ $("wb").onclick=()=>$("wf").click();
+ $("wf").onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();
+  r.onload=()=>{const im=new Image();im.onload=()=>{const k=Math.min(1,600/Math.max(im.width,im.height)),c=document.createElement("canvas");c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);c.getContext("2d").drawImage(im,0,0,c.width,c.height);sv.photo=c.toDataURL("image/jpeg",.7);store.set("sv",sv);show()};im.src=r.result};r.readAsDataURL(f);e.target.value=""};
+ $("wx").onclick=()=>{delete sv.photo;store.set("sv",sv);show()};
+ $("wn").oninput=e=>{sv.item=e.target.value;store.set("sv",sv)};
+ function pop(){
+  if(!sv.photo)return;
+  const g=Math.max(+sv.goal||1,1),sum=sv.entries.reduce((a,e)=>a+e.a,0),left=Math.max(g-sum,0),p=Math.min(sum/g*100,100);
+  $("wmi").src=sv.photo;$("wmt").textContent=(sv.item||"គោលដៅរបស់ខ្ញុំ")+" · "+p.toFixed(1)+"%";
+  $("wmm").textContent=left<=0?"🎉 សម្រេចគោលដៅហើយ! អបអរសាទរ!":"នៅសល់ "+money(left)+" ទៀត អ្នកអាចធ្វើបាន! 💪";
+  m.classList.add("on")}
+ img.onclick=pop;
+ $("wmc").onclick=()=>m.classList.remove("on");
+ m.onclick=e=>{if(e.target===m)m.classList.remove("on")};
+ $("sadd").addEventListener("click",()=>setTimeout(()=>{if(sv.entries.length>last)pop();last=sv.entries.length},50));
+ $("sh").addEventListener("click",()=>setTimeout(()=>{last=sv.entries.length},50));
+})();
 /* khmer consonants -> latin */
 const CM={"ក":["ka","k"],"ខ":["kha","kh"],"គ":["ko","k"],"ឃ":["kho","kh"],"ង":["ngo","ng"],"ច":["cha","ch"],"ឆ":["chha","chh"],"ជ":["cho","ch"],"ឈ":["chho","chh"],"ញ":["nho","nh"],"ដ":["da","d"],"ឋ":["tha","th"],"ឌ":["do","d"],"ឍ":["tho","th"],"ណ":["na","n"],"ត":["ta","t"],"ថ":["tha","th"],"ទ":["to","t"],"ធ":["tho","th"],"ន":["no","n"],"ប":["ba","b"],"ផ":["pha","ph"],"ព":["po","p"],"ភ":["pho","ph"],"ម":["mo","m"],"យ":["yo","y"],"រ":["ro","r"],"ល":["lo","l"],"វ":["vo","v"],"ស":["sa","s"],"ហ":["ha","h"],"ឡ":["la","l"],"អ":["a","a"]};
 let cmode=1;
@@ -1393,6 +1434,52 @@ function end(){
  root.innerHTML='<div class="gq"><div class="big">'+(sc>=8?"🏆":sc>=5?"👍":"💪")+' '+sc+' / '+w.length+'</div><p class="m">'+(sc>=8?"ពូកែណាស់!":sc>=5?"ល្អហើយ សាកល្បងទៀត!":"កុំបោះបង់ សាកល្បងម្តងទៀត!")+'</p></div><button class="b" id="zr" style="width:100%">🔁 លេងម្តងទៀត</button><button class="g" id="zm" style="width:100%;margin-top:8px;padding:8px">ត្រឡប់ទៅម៉ឺនុយ</button>';
  $("zr").onclick=()=>{w=sh(w);n=0;sc=0;next()};$("zm").onclick=menu}
 menu()})();
+(async function(){
+ const k=store.get("opens",0)+1;store.set("opens",k);
+ $("ucl").textContent="· បើកលើឧបករណ៍នេះ "+k+" ដង";
+ try{
+  const db=await claude.use("db"),user=await claude.use("user");
+  if(!db)return;
+  const id=user?await user.id():null,col=db.collection("visitors");
+  if(id&&!store.get("ucreg",false)){try{await col.doc(id).set({t:Date.now()});store.set("ucreg",true)}catch(e){}}
+  col.onSnapshot(s=>{$("ucn").textContent=s.size},()=>{});
+ }catch(e){}
+})();
+/* social links */
+(function(){
+ /* ដាក់ឈ្មោះគណនី ឬតំណពេញ នៅទីនេះ */
+ const SOC={tiktok:"pmcyxhkv",tiktok2:"savingmoneyforviv",facebook:"",telegram:"",instagram:"",youtube:"",phone:""};
+ const T=[["tiktok","🎵","TikTok 1",v=>"https://www.tiktok.com/@"+v.replace(/^@/,"")],
+  ["tiktok2","🎵","TikTok 2",v=>"https://www.tiktok.com/@"+v.replace(/^@/,"")],
+  ["facebook","📘","Facebook",v=>"https://www.facebook.com/"+v],
+  ["telegram","✈️","Telegram",v=>"https://t.me/"+v.replace(/^@/,"")],
+  ["instagram","📸","Instagram",v=>"https://www.instagram.com/"+v.replace(/^@/,"")],
+  ["youtube","▶️","YouTube",v=>"https://www.youtube.com/@"+v.replace(/^@/,"")],
+  ["phone","📞","ទូរស័ព្ទ",v=>"tel:"+v]];
+ T.forEach(t=>{const v=(SOC[t[0]]||"").trim(),a=document.createElement("a");
+  a.innerHTML='<span class="i">'+t[1]+'</span>'+t[2]+'<small>'+(v?(t[0].indexOf("tiktok")===0?"@"+v.replace(/^@/,""):v):"មិនទាន់កំណត់")+'</small>';
+  if(v){a.href=/^(https?:|tel:)/.test(v)?v:t[3](v);if(t[0]!=="phone"){a.target="_blank";a.rel="noopener noreferrer"}}
+  else{a.className="off";a.href="#";a.onclick=e=>{e.preventDefault();alert("មិនទាន់កំណត់តំណ "+t[2]+" ទេ")}}
+  $("soc").appendChild(a)});
+})();
+/* assistive touch */
+(function(){
+ const fab=$("fab"),pn=$("fpn"),pos=store.get("fabp",{side:"r",y:.6});
+ function place(){const w=innerWidth,h=innerHeight;fab.style.left=(pos.side==="l"?8:w-64)+"px";fab.style.top=Math.min(Math.max(pos.y*h,60),h-130)+"px"}
+ place();addEventListener("resize",place);
+ let drag=false,moved=false,sx=0,sy=0,ox=0,oy=0;
+ fab.addEventListener("pointerdown",e=>{drag=true;moved=false;sx=e.clientX;sy=e.clientY;const r=fab.getBoundingClientRect();ox=r.left;oy=r.top;try{fab.setPointerCapture(e.pointerId)}catch(x){}fab.style.transition="none"});
+ fab.addEventListener("pointermove",e=>{if(!drag)return;const dx=e.clientX-sx,dy=e.clientY-sy;if(Math.abs(dx)+Math.abs(dy)>6)moved=true;if(moved){fab.style.left=(ox+dx)+"px";fab.style.top=(oy+dy)+"px"}});
+ fab.addEventListener("pointerup",()=>{if(!drag)return;drag=false;fab.style.transition="left .2s,top .2s";
+  if(moved){const r=fab.getBoundingClientRect();pos.side=(r.left+28<innerWidth/2)?"l":"r";pos.y=r.top/innerHeight;store.set("fabp",pos);place()}else pn.classList.toggle("on")});
+ const idx=k=>names.findIndex(n=>n.includes(k));
+ const tk=n=>()=>{const a=$("soc").children[n];if(a&&a.href&&a.href.indexOf("http")===0)window.open(a.href,"_blank","noopener");else go(idx("ទំនាក់ទំនង"))};
+ [["💬","ទំនាក់ទំនង",()=>go(idx("ទំនាក់ទំនង"))],["🎵","TikTok 1",tk(0)],["🎵","TikTok 2",tk(1)]].forEach(it=>{
+  const lk=/^TikTok (\d)/.exec(it[1]),src=lk&&$("soc").children[+lk[1]-1];if(src&&src.href&&src.href.indexOf("http")===0){const a=document.createElement("a");a.className="fi";a.href=src.href;a.target="_blank";a.rel="noopener noreferrer";a.innerHTML="<span>"+it[0]+"</span>"+it[1]+'<small style="display:block;opacity:.7;font-size:.6rem;word-break:break-all">'+src.querySelector("small").textContent+"</small>";a.onclick=e=>{e.preventDefault();const u=src.href;let w=null;try{w=window.open(u,"_blank")}catch(x){}if(!w){try{window.top.location.href=u}catch(x){location.href=u}}else{try{w.opener=null}catch(x){}}setTimeout(()=>pn.classList.remove("on"),250)};$("fgr").appendChild(a);return}
+  const b=document.createElement("button");b.className="fi";b.innerHTML="<span>"+it[0]+"</span>"+it[1];
+  b.onclick=()=>{pn.classList.remove("on");it[2]()};$("fgr").appendChild(b)});
+ pn.addEventListener("click",e=>{if(e.target===pn)pn.classList.remove("on")});
+})();
 go(store.get("tab2",0));
 </script>
 </body>
