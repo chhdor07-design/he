@@ -157,7 +157,7 @@ a.fi{display:block;text-decoration:none;text-align:center}
 </div>
 
 <div class="pane" id="p3">
-<div class="card"><small class="m">🎯 របស់ដែលចង់បាន</small><input id="wn" placeholder="ឧ. ទូរស័ព្ទថ្មី ម៉ូតូ កង់" style="margin:6px 0"><img id="wi" alt="" style="display:none;width:100%;max-height:230px;object-fit:cover;border-radius:12px;cursor:pointer;margin-bottom:8px"><input type="file" id="wf" accept="image/*" hidden><div class="row"><button class="b" id="wb">📷 ដាក់រូបថត</button><button class="g" id="wx" style="display:none">លុបរូប</button></div><p class="m" style="margin:6px 0 0">ចុចលើរូបថត ឬពេលសន្សំ រូបនឹងលោតបង្ហាញ។</p></div>
+<div class="card"><small class="m">🎯 របស់ដែលចង់បាន</small><input id="wn" placeholder="ឧ. ទូរស័ព្ទថ្មី ម៉ូតូ កង់" style="margin:6px 0"><div id="wc" style="position:relative;width:210px;height:210px;margin:6px auto 18px"><svg viewBox="0 0 200 200" style="position:absolute;inset:0;width:100%;height:100%;transform:rotate(-90deg)"><circle cx="100" cy="100" r="92" fill="none" stroke="var(--line)" stroke-width="10"/><circle id="wr" cx="100" cy="100" r="92" fill="none" stroke="#e53935" stroke-width="10" stroke-linecap="round" stroke-dasharray="578" stroke-dashoffset="578" style="transition:stroke-dashoffset .5s"/></svg><img id="wi" alt="" style="display:none;position:absolute;inset:20px;width:calc(100% - 40px);height:calc(100% - 40px);border-radius:50%;object-fit:cover;cursor:pointer"><div id="wph" style="position:absolute;inset:20px;border-radius:50%;background:var(--key);display:flex;align-items:center;justify-content:center;font-size:3rem;cursor:pointer">📷</div><div id="wbd" style="position:absolute;left:50%;bottom:-10px;transform:translateX(-50%);background:#e53935;color:#fff;font-weight:700;padding:2px 14px;border-radius:8px;font-size:1.2rem">0 %</div></div><div class="m" style="text-align:center;margin:0 0 8px;letter-spacing:.08em">បានសន្សំ</div><input type="file" id="wf" accept="image/*" hidden><div class="row"><button class="b" id="wb">📷 ដាក់រូបថត</button><button class="g" id="wx" style="display:none">លុបរូប</button></div><p class="m" style="margin:6px 0 0">ចុចលើរូបថត ឬពេលសន្សំ រូបនឹងលោតបង្ហាញ។</p></div>
 <div class="card"><div class="row">
 <div class="f"><small>គោលដៅសរុប</small><input id="sg" type="number" min="1" inputmode="numeric"></div>
 <div class="f"><small>សន្សំក្នុងមួយថ្ងៃ</small><input id="sd" type="number" min="1" inputmode="numeric"></div>
@@ -241,7 +241,7 @@ a.fi{display:block;text-decoration:none;text-align:center}
 </main>
 <div id="y_msg"></div>
 <button id="fab" aria-label="ម៉ឺនុយរហ័ស">💬</button><div id="fpn"><div class="fp"><div class="fg" id="fgr"></div></div></div>
-<div id="wm"><div class="card" style="max-width:420px;width:100%;text-align:center"><img id="wmi" alt="" style="width:100%;max-height:60vh;object-fit:cover;border-radius:12px"><p class="big" id="wmt" style="margin:8px 0 0"></p><p class="m" id="wmm"></p><button class="b" id="wmc" style="width:100%">បិទ</button></div></div>
+<div id="wm"><div class="card" style="max-width:420px;width:100%;text-align:center"><img id="wmi" alt="" style="width:240px;height:240px;max-width:100%;object-fit:cover;border-radius:50%;border:6px solid #e53935"><p class="big" id="wmt" style="margin:8px 0 0"></p><p class="m" id="wmm"></p><button class="b" id="wmc" style="width:100%">បិទ</button></div></div>
 <script>
 const $=id=>document.getElementById(id);
 const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
@@ -351,9 +351,10 @@ sr();
 
 (function(){
  const img=$("wi"),m=$("wm");let last=sv.entries.length;
- function show(){if(sv.photo){img.src=sv.photo;img.style.display="block";$("wx").style.display="inline-block"}else{img.style.display="none";$("wx").style.display="none"}$("wn").value=sv.item||""}
- show();
- $("wb").onclick=()=>$("wf").click();
+ function ring(){const g=Math.max(+sv.goal||1,1),sum=sv.entries.reduce((a,e)=>a+e.a,0),p=Math.min(sum/g*100,100);$("wr").style.strokeDashoffset=578*(1-p/100);$("wbd").textContent=Math.round(p)+" %";$("wph").style.display=sv.photo?"none":"flex"}
+ function show(){if(sv.photo){img.src=sv.photo;img.style.display="block";$("wx").style.display="inline-block"}else{img.style.display="none";$("wx").style.display="none"}$("wn").value=sv.item||"";ring()}
+ show();const _sr=sr;sr=function(){_sr();ring()};
+ $("wb").onclick=()=>$("wf").click();$("wph").onclick=()=>$("wf").click();
  $("wf").onchange=e=>{const f=e.target.files[0];if(!f)return;const r=new FileReader();
   r.onload=()=>{const im=new Image();im.onload=()=>{const k=Math.min(1,600/Math.max(im.width,im.height)),c=document.createElement("canvas");c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);c.getContext("2d").drawImage(im,0,0,c.width,c.height);sv.photo=c.toDataURL("image/jpeg",.7);store.set("sv",sv);show()};im.src=r.result};r.readAsDataURL(f);e.target.value=""};
  $("wx").onclick=()=>{delete sv.photo;store.set("sv",sv);show()};
